@@ -1,0 +1,13 @@
+c:\users\user\documents\visual studio 2015\Projects\CodeWarsRepo\CodeWarsRepo\bin\Debug\CodeWarsRepo.exe.config
+C:\Users\User\Documents\GitHub\CodeWars\CodeWarsRepo\bin\Debug\CodeWarsRepo.exe.config
+C:\Users\User\Documents\GitHub\CodeWars\CodeWarsRepo\bin\Debug\CodeWarsRepo.exe
+C:\Users\User\Documents\GitHub\CodeWars\CodeWarsRepo\bin\Debug\CodeWarsRepo.pdb
+C:\Users\User\Documents\GitHub\CodeWars\CodeWarsRepo\obj\Debug\CodeWarsRepo.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\CodeWars\CodeWarsRepo\obj\Debug\CodeWarsRepo.exe
+C:\Users\User\Documents\GitHub\CodeWars\CodeWarsRepo\obj\Debug\CodeWarsRepo.pdb
+C:\Users\User\Documents\GitHub\PracticeBeforeInterview\CodeWars\CodeWarsRepo\bin\Debug\CodeWarsRepo.exe.config
+C:\Users\User\Documents\GitHub\PracticeBeforeInterview\CodeWars\CodeWarsRepo\obj\Debug\CodeWarsRepo.exe
+C:\Users\User\Documents\GitHub\PracticeBeforeInterview\CodeWars\CodeWarsRepo\obj\Debug\CodeWarsRepo.pdb
+C:\Users\User\Documents\GitHub\PracticeBeforeInterview\CodeWars\CodeWarsRepo\bin\Debug\CodeWarsRepo.exe
+C:\Users\User\Documents\GitHub\PracticeBeforeInterview\CodeWars\CodeWarsRepo\bin\Debug\CodeWarsRepo.pdb
+C:\Users\User\Documents\GitHub\PracticeBeforeInterview\CodeWars\CodeWarsRepo\obj\Debug\CodeWarsRepo.csprojResolveAssemblyReference.cache
