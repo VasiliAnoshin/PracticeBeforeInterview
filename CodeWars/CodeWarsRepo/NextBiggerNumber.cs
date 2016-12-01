@@ -8,7 +8,8 @@ namespace CodeWarsRepo
 {
     class NextBiggerNumber
     {
-        //Description:
+        //#4qyu
+        //Description: 
         //You have to create a function that takes a positive integer 
         //number and returns the next bigger number formed by the same digits:
         //Kata.NextBiggerNumber(12)==21
