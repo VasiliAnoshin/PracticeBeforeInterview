@@ -9,7 +9,7 @@ public class Controller {
 	{
 		for(int i = 0;i < arraySize; i++)
 		{
-			theArray[i] = (int)(Math.random()*10) + 10;
+			theArray[i] = (int)(Math.random()*(100)) + 0;
 		}
 	}
 	

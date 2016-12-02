@@ -1,48 +1,55 @@
 package ds;
+//Mergesort sorts in worst case in O(n log n) time. 
+//Due to the required copying of the collection Mergesort is in the average case slower then Quicksort.
 
-import javafx.util.converter.NumberStringConverter;
-
-public class MergeSort {
+public class MergeSort {	
+	//Help array
 	int helper[];
-	public int[] startMerge(int[] numbers){
-		int mediana  = numbers.length/2;
-		this.helper = new int[numbers.length];
-		mergeSort(numbers, mediana , 0 , numbers.length-1);
-		return numbers;
+	public int[] startMerge(int[] inputArray){		
+		this.helper = new int[inputArray.length];
+		mergeSort(inputArray, 0 , inputArray.length-1);
+		return inputArray;
 	}
-	public int[] mergeSort(int[] numbers, int median, int low, int high){
+	public void mergeSort(int[] numbers, int low, int high){
+		//Recursion condition
 		if(low<high)
 		{
-			mergeSort(numbers,high/2, low, median);
-			mergeSort(numbers,(high + median)/2 , median+1,high);
-			Merge(numbers , helper, low , high ,median);
+			int middle = (low + high)/2;
+			//Sort the left Side
+			mergeSort(numbers,low,middle);
+			//Sort the right Side
+			mergeSort(numbers,middle+1,high);
+			//Merge them
+			Merge(numbers , helper, low , high ,middle);
 		}
-		return numbers;
-	}
-	
-	public int[] Merge(int[]numbers, int[] helper, int low , int high , int mediana ){
+	}	
+	public void Merge(int[]inputArray, int[] helper, int low , int high , int middle ){
+		//Copy both halfes into the helper array
 		for(int i = low; i<=high; i++){
-			helper[i] = numbers[i];
+			helper[i] = inputArray[i];
 		}
-		
+		//Create 3 pointers , one for leftSide the second for the rightSide and the current for inputArray
 		int leftSide = low;
-		int rightSide = mediana + 1;
+		int rightSide = middle + 1;
 		int current = low;;
-		
-		while((leftSide<= mediana) && (rightSide <= high)){
-			if(helper[leftSide] <= helper[rightSide]){
-				numbers[current] = helper[leftSide];
+		//Iterate through helper array. Compare the left and right half. Copying back the smaller element from 
+		//the two halves into the original array.
+		while((leftSide<= middle) && (rightSide <= high)){
+			if(helper[leftSide] <= helper[rightSide]){ // if left element is smaller then right
+				inputArray[current] = helper[leftSide];
 				leftSide++;
 			}else{
-				numbers[current]= helper[rightSide];
+				//if right element is smaller than left element
+				inputArray[current]= helper[rightSide];
 				rightSide++;
 			}
 			current++;
 		}
-		
-		for(int i = leftSide; i<= mediana; i++){
-			numbers[current] = helper[leftSide + i];
+		//Copy the rest of the left side of the array into target array . MergeSort stable algorihtm and in the final stage of recursion get two sorted halves .
+		//If the right half is bigger it's already original array . 		
+		int remaining = middle - leftSide;
+		for(int i = 0; i<= remaining; i++){
+			inputArray[current + i] = helper[leftSide + i];
 		}
-		return numbers;
 	}
 }
