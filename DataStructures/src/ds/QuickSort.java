@@ -5,7 +5,7 @@ public class QuickSort {
 	
 	void quickSort(int[] numbers, int left , int right){
 		int index = partition(numbers, left,right);		
-		if(left < index-1){
+		if(left < index - 1){
 			//Sort LeftHalf
 			quickSort(numbers,left,index-1);			
 		}

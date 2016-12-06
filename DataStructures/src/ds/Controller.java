@@ -2,7 +2,7 @@ package ds;
 
 public class Controller {
 
-	private static int[] theArray = new int[10];
+	public static int[] theArray = new int[10];
 	private int arraySize = 10;
 	
 	public void generateRandomArray()
@@ -56,11 +56,13 @@ public class Controller {
 		MergeSort ms = new MergeSort();     
 		//=================================
 		engie.printArrayInHorizontalMode();	
-		ms.startMerge(engie.theArray);
+		ms.startMerge(Controller.theArray);
 		engie.printArrayInHorizontalMode();
 		//=================================
 		QuickSort qs = new QuickSort();
-		
+		int arr[] = new int[]{7,5,6,4,67,68};
+		int arr2[] = new int[]{5,7,10,9,8,6};
+		qs.quickSort(arr2,0,arr2.length-1);
 	}
 
 }
