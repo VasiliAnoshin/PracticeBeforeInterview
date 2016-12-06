@@ -60,6 +60,7 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		}
 		return A;
 	} 
+	//10.2 write a method to sort an array of strings so that all the anagrams are next to each other.
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -70,7 +71,13 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		A[2] =5;
 		A[3] =6;
 		int[] B = new int[]{4,5,6,7};
-		sort.printArrayInHorizontalMode(sort.SortedMerge(A, B));
+		//run 10.1 solution
+		//sort.printArrayInHorizontalMode(sort.SortedMerge(A, B));
+		//run 10.2 solution
+		
+		//run 10.3 solution
+		
+		
 	}
 
 }
