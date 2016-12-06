@@ -57,7 +57,10 @@ public class Controller {
 		//=================================
 		engie.printArrayInHorizontalMode();	
 		ms.startMerge(engie.theArray);
-		engie.printArrayInHorizontalMode();			
+		engie.printArrayInHorizontalMode();
+		//=================================
+		QuickSort qs = new QuickSort();
+		
 	}
 
 }
