@@ -1,4 +1,8 @@
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
 
+import com.sun.crypto.provider.HmacMD5;
 
 public class Chapter10Sorting {
 
@@ -25,6 +29,7 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		for(int i=0;i< arraySize.length;i++){
 			System.out.print("-------");}
 		}
+//=================================================================================
 	//10.1
     //You are given two sorted arrays , A and B , where A has a large enough buffer at the end to hold B. Write a method to merge B into A in sorted order .
 		//Suppose that A not started from 0.
@@ -59,8 +64,27 @@ public void printArrayInHorizontalMode(int[] arraySize){
 			mergedArray--;
 		}
 		return A;
-	} 
-	//10.2 write a method to sort an array of strings so that all the anagrams are next to each other.
+	}
+//===============================================================================================	
+	//10.2 another implementation: 
+	public String[] sortAnagrams(String[] anagramsArray){
+		HashMap<String,String> hm = new HashMap<String,String>();
+		//Group words by anagram
+		for(String s : anagramsArray){
+			String key = sortChars(s);
+			hm.put(key, s);
+		}
+		//Convert hashTable to Array
+
+		return anagramsArray;		
+	}
+	public String sortChars(String str){
+		char[] charArray = str.toCharArray();
+		Arrays.sort(charArray);
+		return new String(charArray);
+	}
+//=================================================================================	
+	//10.3 given sorted array of n integers that has been rotated an unknown number of times, write code to find an element in the array. Searching an Element in a Rotated Sorted Array
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -72,12 +96,26 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		A[3] =6;
 		int[] B = new int[]{4,5,6,7};
 		//run 10.1 solution
-		//sort.printArrayInHorizontalMode(sort.SortedMerge(A, B));
+		sort.printArrayInHorizontalMode(sort.SortedMerge(A, B));
 		//run 10.2 solution
-		
+		String[] anagramSorting = new String[]{"aba","abb","acc","cca","aab"};
+		Arrays.sort(anagramSorting,new AnagramComparator());
 		//run 10.3 solution
-		
+		int[] arr = null;
 		
 	}
+	
+}
 
+//10.2 write a method to sort an array of strings so that all the anagrams are next to each other. The idea is to turn each of them to be an array of chars and then sort and compare them. 	
+//For  this purpose will use comparator that will compare two strings and set them one after the other . 
+class AnagramComparator implements Comparator<String>{
+	public String sortChars(String str){
+		char[] charArray = str.toCharArray();
+		Arrays.sort(charArray);
+		return new String(charArray);
+	}
+	public int compare(String s1 , String s2){
+		return sortChars(s1).compareTo(sortChars(s2));
+	}
 }
