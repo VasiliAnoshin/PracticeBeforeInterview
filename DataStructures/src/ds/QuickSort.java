@@ -10,6 +10,7 @@ public class QuickSort {
 			quickSort(numbers,left,index-1);			
 		}
 		if(index < right){
+			//Sort RightHalf
 			quickSort(numbers,index, right);
 		}
 	}
@@ -21,17 +22,17 @@ public class QuickSort {
 			while(arr[left]<pivot){
 				left++;
 			}
-				while(arr[right]>pivot){
-					right--;
-				}
-				//Swap element, and move left and right indices
-				if(left <= right){
-					swap(arr,left,right);
-					left++;
-					right--;
-				}
-		}
-				
+			//find element on the right that should be in left 
+			while(arr[right]>pivot){
+				right--;
+			}
+			//Swap element, and move left and right indices
+			if(left <= right){
+				swap(arr,left,right);
+				left++;
+				right--;
+			}
+		}				
 		return left;
 	}
 	
@@ -39,6 +40,5 @@ public class QuickSort {
 		 int temp = numbers[left];
          numbers[left] = numbers[right];
          numbers[right] = temp;
-	}
-	
+	}	
 }

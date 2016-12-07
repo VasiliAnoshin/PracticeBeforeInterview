@@ -44,7 +44,7 @@ public class Controller {
 		for(int i=0;i<arraySize;i++){
 			System.out.print("-------");
 		}
-		
+		System.out.print("\n");
 		
 	}
 	
@@ -63,6 +63,17 @@ public class Controller {
 		int arr[] = new int[]{7,5,6,4,67,68};
 		int arr2[] = new int[]{5,7,10,9,8,6};
 		qs.quickSort(arr2,0,arr2.length-1);
+		//==================================
+		System.out.println("SelectionSort , start sorting : ");
+		SinkingSort sort = new SinkingSort();
+		engie.generateRandomArray();        		
+		sort.selectionSort(Controller.theArray);
+		engie.printArrayInHorizontalMode();
+		//==================================
+		System.out.println("Bubblesort , start sorting : ");
+		engie.generateRandomArray();        		
+		sort.BubbleSort(Controller.theArray);
+		engie.printArrayInHorizontalMode();
 	}
 
 }
