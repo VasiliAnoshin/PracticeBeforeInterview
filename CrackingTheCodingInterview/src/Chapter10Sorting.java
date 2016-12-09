@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.*;
 
 
@@ -68,26 +65,36 @@ public void printArrayInHorizontalMode(int[] arraySize){
 	//========================================================================================================	
 	//10.2 another implementation: 
 	public String[] sortAnagrams(String[] anagramsArray){
-		HashMap<String,String> hm = new HashMap<String,String>();
-		//Group words by anagram . The same anagrams have the same chars but in different order. 
-		//We will sort the chars in the words .  
-		for(String s : anagramsArray){
-			String key = sortChars(s);
-			hm.put(key, s);
+		HashMap<String,List<String>> dictionary = new HashMap<String,List<String>>();
+		//Group words by anagram . The same words have the same anagrams but in the different order.  
+		for(String word : anagramsArray){
+			String key = sortChars(word);
+			//For each key create bucket (for this purpose will choose LinkedList). 
+			if(dictionary.get(key)==null){
+				List<String> node = new LinkedList<String>();
+				node.add(word);				
+				dictionary.put(key, node);
+			}else{
+				dictionary.get(key).add(word);
+			}
 		}
-		int i=0;
-	//Convert hashTable to Array
-		ArrayList<String> tempList = new ArrayList<String>();
-		for(HashMap.Entry<String, String> entry : hm.entrySet()){
-			//tempList.add(entry.getKey());
-			//for(String s : tempList){
-				anagramsArray[i] = entry.getValue();
-				i++;
-			//}
+	//Iterate through the same keys and put the same anagrams one after other 
+		List<String> tempList = new ArrayList<String>();
+		//Iterator give possibility to iterate over the linList elements 
+		for (Iterator<String> it = dictionary.keySet().iterator(); it.hasNext(); ){
+			//GEt LinkedList from the bucket
+			List<String> ll = (LinkedList<String>) dictionary.get(it.next());
+			for( int j = 0; j < ll.size(); j++){
+				tempList.add(ll.get(j));
+			}
+		}
+		//prepare returned array
+		for(int cur = 0; cur < tempList.size(); cur++){
+			anagramsArray[cur] = tempList.get(cur);
 		}
 		return anagramsArray;		
 	}
-	//Make array of 
+	//Sort the word according to alphabet .
 	public String sortChars(String str){
 		char[] charArray = str.toCharArray();
 		Arrays.sort(charArray);
@@ -112,7 +119,8 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		String[] anagramSorting = new String[]{"aba","abb","acc","cca","aab"};
 		Arrays.sort(anagramSorting,new AnagramComparator());
 		//run another form of 10.2 solution 
-		sort.sortAnagrams(anagramSorting);
+		String [] arr = sort.sortAnagrams(anagramSorting);
+		
 		//run 10.3 solution
 	
 	}	
