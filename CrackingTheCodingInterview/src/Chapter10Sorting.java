@@ -103,7 +103,48 @@ public void printArrayInHorizontalMode(int[] arraySize){
 //=================================================================================	
 	//10.3 given sorted array of n integers that has been rotated an unknown number of times, write code to find 
 	//an element in the array. Searching an Element in a Rotated Sorted Array
-	
+	public int searchInRotatedArray(int[] rotatedArray, int number , int start , int end){
+		int middle = (start + end) /2;
+		int result = -1;
+		//If number was found return this number
+		if(rotatedArray[middle] == number){
+			return middle;
+		};
+		if (start > end){
+			return -1;
+		}
+		// Solution idea : If array was rotated that's mean that's left/right parts are rotated . 
+		//If we divide the array in two halves we can see which part is rotated . 
+		//if right part is sorted
+		if(rotatedArray[end] > rotatedArray[middle]){
+			if((number > rotatedArray[middle] ) &  (number <= rotatedArray[end])){
+				result = searchInRotatedArray(rotatedArray, number, middle +1 , end);
+			}else{
+				result = searchInRotatedArray(rotatedArray, number,  start , middle -1);
+			}
+		}//if left part is sorted
+		if(rotatedArray[start] < rotatedArray[middle]){
+			if((number >= rotatedArray[start] ) &  (number < rotatedArray[middle])){
+				result = searchInRotatedArray(rotatedArray, number, start , middle -1);
+			}else{
+				result = searchInRotatedArray(rotatedArray, number, middle +1 , end);
+			}
+		}
+		if(rotatedArray[start] == rotatedArray[middle]){
+			if(rotatedArray[middle] != rotatedArray[end]){
+				result = searchInRotatedArray(rotatedArray , number , middle +1 , end);			
+			}else {
+				// if both halves are equals 
+				result = searchInRotatedArray(rotatedArray , number , middle +1 , end);
+				if(result!= -1){
+					result = searchInRotatedArray(rotatedArray , number , start , middle +1);
+				}else{
+					return result;
+				}
+			}			
+		}
+		return result;
+	}	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Chapter10Sorting sort = new Chapter10Sorting();
@@ -119,10 +160,12 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		String[] anagramSorting = new String[]{"aba","abb","acc","cca","aab"};
 		Arrays.sort(anagramSorting,new AnagramComparator());
 		//run another form of 10.2 solution 
-		String [] arr = sort.sortAnagrams(anagramSorting);
-		
+		//String [] arr = sort.sortAnagrams(anagramSorting);
+		int[] arrayForSort = new int[]{10,15,20,0,5};
 		//run 10.3 solution
-	
+		int resFor103 = sort.searchInRotatedArray(arrayForSort, 11 ,0,arrayForSort.length -1);
+		System.out.print("\n");
+		System.out.println("#10.3 : Index of entered number is : " + resFor103);		
 	}	
 }
 //10.2 write a method to sort an array of strings so that all the anagrams are next to each other. The idea is to turn each of them to be an array of chars and then sort and compare them. 	
