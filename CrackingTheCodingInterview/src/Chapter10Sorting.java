@@ -129,7 +129,11 @@ public void printArrayInHorizontalMode(int[] arraySize){
 			}else{
 				result = searchInRotatedArray(rotatedArray, number, middle +1 , end);
 			}
-		}
+		}//This part is responsible for two cases : 
+		// if you get the number that doesn't exist in array in the end of recursion you will get
+		// the same place in the array. Such that first two conditions does not relevant. 
+		// The second case is : {2,2,2,3,4,2} - such that middle of this array is equal to 
+		// the beginning and the end of the array. 
 		if(rotatedArray[start] == rotatedArray[middle]){
 			if(rotatedArray[middle] != rotatedArray[end]){
 				result = searchInRotatedArray(rotatedArray , number , middle +1 , end);			
@@ -161,9 +165,9 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		Arrays.sort(anagramSorting,new AnagramComparator());
 		//run another form of 10.2 solution 
 		//String [] arr = sort.sortAnagrams(anagramSorting);
-		int[] arrayForSort = new int[]{10,15,20,0,5};
+		int[] arrayForSort = new int[]{15,16,19,20,25,1,3,4,5,7,10,14};
 		//run 10.3 solution
-		int resFor103 = sort.searchInRotatedArray(arrayForSort, 11 ,0,arrayForSort.length -1);
+		int resFor103 = sort.searchInRotatedArray(arrayForSort, 14 ,0,arrayForSort.length -1);
 		System.out.print("\n");
 		System.out.println("#10.3 : Index of entered number is : " + resFor103);		
 	}	
