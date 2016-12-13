@@ -148,7 +148,20 @@ public void printArrayInHorizontalMode(int[] arraySize){
 			}			
 		}
 		return result;
-	}	
+	}
+	//10.4=========================================================================
+	/* Theoretical question
+	 * Given an array like Data Structure Listy which lacks a size method. It does a , however, have an elementAt(i) 
+	 * that return element in index i in O(1) time. If i is beyonds the bounds of the data structure is return -1. 
+	 * For this reason the data structure has only positive integers . Listy contains sorted , positive integers , find the index in which 
+	 * element x occurs. 
+	 */
+	  
+		public int GetOccurenceOfElement(Listy list , int element){
+			return element;
+			
+		}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Chapter10Sorting sort = new Chapter10Sorting();
@@ -169,7 +182,10 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		//run 10.3 solution
 		int resFor103 = sort.searchInRotatedArray(arrayForSort, 14 ,0,arrayForSort.length -1);
 		System.out.print("\n");
-		System.out.println("#10.3 : Index of entered number is : " + resFor103);		
+		System.out.println("#10.3 : Index of entered number is : " + resFor103);
+		//run 10.4 solution
+		Listy resFor104 = new Listy();
+		sort.GetOccurenceOfElement(resFor104, 10);
 	}	
 }
 //10.2 write a method to sort an array of strings so that all the anagrams are next to each other. The idea is to turn each of them to be an array of chars and then sort and compare them. 	
@@ -184,3 +200,4 @@ class AnagramComparator implements Comparator<String>{
 		return sortChars(s1).compareTo(sortChars(s2));
 	}
 }
+
