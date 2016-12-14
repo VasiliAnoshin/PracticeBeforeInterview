@@ -207,37 +207,41 @@ public void printArrayInHorizontalMode(int[] arraySize){
 					 break;
 				 }
 			 }else{
-				 int left = mid -1;
+				 int left = mid - 1;
 				 int right = mid +1;
 				 while(true){
-					 if(left > low && right > high){
+					 if(left < low && right > high){
 						 return result;
 					 }else if(!arr[left].isEmpty()){
-						 //Assign new mid from left
-						 high = left;
+						 //Assign the new low/upper bound of array
 						 if(arr[left].compareTo(value)==0){
-							 return left;
-							 
-						 }else{
+							 return left;							 
+						 }else if(arr[left].compareTo(value)<0){
+							 low = right;
 							 break;
+						 }else if(arr[left].compareTo(value)>0){
+							 high = right;							 
 						 }						 
 					 }else if(!arr[right].isEmpty()){
 						 //Assign new mid from right
-						 low = right;
 						 if(arr[right].compareTo(value) == 0){
 							 return right; 
-						 }
-						 else{
+						 }else if(arr[right].compareTo(value)<0){
+							 low = left;
 							 break;
+						 }else if(arr[right].compareTo(value)>0){
+							 high = left;
+							 break;
+						 	}					
 						 }
-					 }
+					 right++;
+					 left--;
 				 }
-				 right++;
-				 left--;
 			 }
 		 }		 
 		 return result;
-	 }				
+	 }
+	 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Chapter10Sorting sort = new Chapter10Sorting();
@@ -270,7 +274,7 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		str2 ="a";
 		System.out.println("Comparing two string : str1 is a str2 is a , result is " + str2.compareTo(str1));
 		String[] stringArray = new String[]{"at","","","","ball","","","car","","","dad","",""};
-		System.out.println(sort.CheckBeforeTheSearch(stringArray, "ball"));
+		System.out.println(sort.CheckBeforeTheSearch(stringArray, "cra"));
 		
 	}	
 }
