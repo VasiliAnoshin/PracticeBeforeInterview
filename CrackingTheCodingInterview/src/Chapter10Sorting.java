@@ -155,12 +155,31 @@ public void printArrayInHorizontalMode(int[] arraySize){
 	 * that return element in index i in O(1) time. If i is beyonds the bounds of the data structure is return -1. 
 	 * For this reason the data structure has only positive integers . Listy contains sorted , positive integers , find the index in which 
 	 * element x occurs. 
-	 */
-	  
-		public int GetOccurenceOfElement(Listy list , int element){
-			return element;
-			
-		}
+	 */	  
+	public int getSortedSearchNoSize(Listy list , int value){
+		int index =1;
+		while(list.elementAt(index)!= -1 & list.elementAt(index) < value){
+			index*=2;
+		}		
+		return binarySearchModificated(list , value, index/2 ,index);
+	}//It is small modification of BinarySearch . 
+	public int  binarySearchModificated(Listy list , int value , int low ,int high){
+		int result;
+		int mid;
+		while (low <= high ){
+			mid = (low + high)/2; 
+			if(list.elementAt(mid) == value){
+				result = list.elementAt(mid);
+				break;
+			}else if(list.elementAt(mid) < value){
+				low = mid +1;
+			}else if (list.elementAt(mid) > value || list.elementAt(mid) == -1){
+				high = mid -1;
+			}
+		}				
+		return -1;
+		
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -183,9 +202,10 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		int resFor103 = sort.searchInRotatedArray(arrayForSort, 14 ,0,arrayForSort.length -1);
 		System.out.print("\n");
 		System.out.println("#10.3 : Index of entered number is : " + resFor103);
-		//run 10.4 solution
+		//run 10.4 solution (array should be sorted)
 		Listy resFor104 = new Listy();
-		sort.GetOccurenceOfElement(resFor104, 10);
+		System.out.println(sort.getSortedSearchNoSize(resFor104, 10));
+		
 	}	
 }
 //10.2 write a method to sort an array of strings so that all the anagrams are next to each other. The idea is to turn each of them to be an array of chars and then sort and compare them. 	

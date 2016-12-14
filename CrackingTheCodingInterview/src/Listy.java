@@ -5,16 +5,19 @@ public class Listy {
 	private int curPosition = 0;
 	public Listy(){
 		elementsArray = new int[100];
+		initializeArray();
+		//generateRandomArray();
 	}
 	public void addElement(int value){
 		elementsArray[curPosition] = value;
-		curPosition++;
-		initializeArray();
-		generateRandomArray();
+		curPosition++;		
 	}
 	private void initializeArray(){
-		for(int i =0; i < elementsArray.length; i++){
-			elementsArray[curPosition] = -1;
+		for(int i =0; i < elementsArray.length/2; i++){
+			elementsArray[i] = i;
+		}
+		for(int i =elementsArray.length/2; i < elementsArray.length; i++){
+			elementsArray[i] = -1;
 		}
 	}
 	public int elementAt(int index){
