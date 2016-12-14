@@ -180,7 +180,64 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		return -1;
 		
 	}
-	
+	//10.5=========================================================================	
+	// given a sorted array of strings that is interspersed with empty strings , write a method to find 
+	//location of a given string . input : ball {"all", "" , "" , "" , ball , "" , "" , "car" , "" , "" ,"dad" , "" , ""} 
+	 public int CheckBeforeTheSearch(String[] arr , String value){
+		 if(arr == null || value == "null" || value =="" ){
+			 return -1;
+		 }
+		 return SparseSearch(arr,value);
+	 }
+	 public int SparseSearch(String[] arr , String value){
+		 int low = 0;;
+		 int high = arr.length -1;
+		 int result = -1;
+		 int mid = 0;		 
+		 while(low <= high){
+			 mid = (low + high)/2;
+			 //If middle value not equal emptyString
+			 if(arr[mid] != ""){
+				 if(arr[mid].compareTo(value)<0){
+					 low = mid+1;
+				 }else if(arr[mid].compareTo(value) > 0){
+					 high = mid-1;
+				 }else{
+					 result = mid;
+					 break;
+				 }
+			 }else{
+				 int left = mid -1;
+				 int right = mid +1;
+				 while(true){
+					 if(left > low && right > high){
+						 return result;
+					 }else if(!arr[left].isEmpty()){
+						 //Assign new mid from left
+						 high = left;
+						 if(arr[left].compareTo(value)==0){
+							 return left;
+							 
+						 }else{
+							 break;
+						 }						 
+					 }else if(!arr[right].isEmpty()){
+						 //Assign new mid from right
+						 low = right;
+						 if(arr[right].compareTo(value) == 0){
+							 return right; 
+						 }
+						 else{
+							 break;
+						 }
+					 }
+				 }
+				 right++;
+				 left--;
+			 }
+		 }		 
+		 return result;
+	 }				
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Chapter10Sorting sort = new Chapter10Sorting();
@@ -205,6 +262,15 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		//run 10.4 solution (array should be sorted)
 		Listy resFor104 = new Listy();
 		System.out.println(sort.getSortedSearchNoSize(resFor104, 10));
+		//run10.5 solution 
+		String str1 = "a";
+		String str2 ="s";
+		System.out.println("Comparing two string : str1 is a str2 is s , result is " + str1.compareTo(str2));
+		System.out.println("Comparing two string : str1 is s str2 is a , result is " + str2.compareTo(str1));
+		str2 ="a";
+		System.out.println("Comparing two string : str1 is a str2 is a , result is " + str2.compareTo(str1));
+		String[] stringArray = new String[]{"at","","","","ball","","","car","","","dad","",""};
+		System.out.println(sort.CheckBeforeTheSearch(stringArray, "ball"));
 		
 	}	
 }
