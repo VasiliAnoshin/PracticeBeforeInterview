@@ -188,7 +188,7 @@ public void printArrayInHorizontalMode(int[] arraySize){
 			 return -1;
 		 }
 		 return SparseSearch(arr,value);
-	 }
+	 }//Iterative solution
 	 public int SparseSearch(String[] arr , String value){
 		 int low = 0;;
 		 int high = arr.length -1;
@@ -198,8 +198,10 @@ public void printArrayInHorizontalMode(int[] arraySize){
 			 mid = (low + high)/2;
 			 //If middle value not equal emptyString
 			 if(arr[mid] != ""){
+				 //If value is bigger then the middleValue set low bound to be mid + 1
 				 if(arr[mid].compareTo(value)<0){
 					 low = mid+1;
+				 //if value is lower then the middleValue set a highBound to be mid -1  	 
 				 }else if(arr[mid].compareTo(value) > 0){
 					 high = mid-1;
 				 }else{
@@ -207,9 +209,12 @@ public void printArrayInHorizontalMode(int[] arraySize){
 					 break;
 				 }
 			 }else{
+				 //if value is empty we will use a technique of finding the next available slot in the array . 
+				 // move the counter both left and right and check if this slot is not empty . 
 				 int left = mid - 1;
 				 int right = mid +1;
 				 while(true){
+					 //Condition to check that we have no available slots in array. 
 					 if(left < low && right > high){
 						 return result;
 					 }else if(!arr[left].isEmpty()){
