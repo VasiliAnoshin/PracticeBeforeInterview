@@ -4,6 +4,7 @@ public class BinarySearch {
 	
 	public int RecursicveApproach(int[] arr ,int value , int start , int end ){
 		int result = -1;
+		//Condition for exit from recursion 
 		if (start > end ){
 			return -1;
 		}
