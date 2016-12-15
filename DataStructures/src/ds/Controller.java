@@ -74,6 +74,14 @@ public class Controller {
 		engie.generateRandomArray();        		
 		sort.BubbleSort(Controller.theArray);
 		engie.printArrayInHorizontalMode();
+		//==================================================
+		System.out.println("BinarySearch , start sorting : ");
+		BinarySearch bs = new BinarySearch();
+		int[] bsArray = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+		System.out.println(bs.RecursicveApproach(bsArray, 16, 0, bsArray.length-1));
+		System.out.println("BinarySearch (iterative approach), start sorting : ");
+		System.out.println(bs .IterativeApproach(bsArray, 0));
+		
 	}
 
 }

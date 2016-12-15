@@ -177,8 +177,7 @@ public void printArrayInHorizontalMode(int[] arraySize){
 				high = mid -1;
 			}
 		}				
-		return -1;
-		
+		return -1;		
 	}
 	//10.5=========================================================================	
 	// given a sorted array of strings that is interspersed with empty strings , write a method to find 
