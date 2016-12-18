@@ -17,8 +17,8 @@ public class BucketSort {
 //they will all fall into a single bucket and be sorted slowly.
 //- What make bucketSort work slowly : major portion of processing time is wasted on creating objects that serve as buckets,
 //sorting data in them, and moving the sorted elements from the buckets to the resultant array.     
-//For large values we will prefer quicksort. 
-// For small values bucketSort can be preferable . It's depends on number of buckets . 
+//If  BucketSort function work so that a number of buckets equals to the number of elements to be sorted and 
+//we get that on SMALL values it work better then quickSort . For large values we will prefer quicksort.  
      
      
 	
