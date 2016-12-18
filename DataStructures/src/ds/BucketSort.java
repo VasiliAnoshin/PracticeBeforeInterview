@@ -6,7 +6,7 @@ import java.util.List;
 public class BucketSort {
      private static final int DEFAULT_BUCKET_SIZE = 5;	
 //Worst Case : O(n^2)       Space: O(n+k)
-//BestCase   :	O(n)
+//BestCase   :	O(n+k) = O(n)
 //AverageCase: O(n+k)
 	
 	//Fast example without sorting each bucket . We choose the same number of buckets as numbers .
@@ -57,7 +57,7 @@ public class BucketSort {
          }
 		 return items;
      }
-	  //SparseArraySorting	  
+	  //SparseArraySorting	second version   
 	  public static void SparseSort(int[] array) {
 		  sort(array, DEFAULT_BUCKET_SIZE);
 	  }
