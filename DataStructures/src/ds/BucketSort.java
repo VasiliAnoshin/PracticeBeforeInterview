@@ -8,6 +8,19 @@ public class BucketSort {
 //Worst Case : O(n^2)       Space: O(n+k)
 //BestCase   :	O(n+k) = O(n)
 //AverageCase: O(n+k)
+     
+//=================================BucketSort vs QuickSort. Which one is faster . 
+//In practice, Quick Sort is usually the fastest sorting algorithm. Its performance is measured most of the time in O(N × log N).
+//This means that the algorithm makes N × log N comparisons to sort N elements.     
+//However, there are sorting algorithms that use fewer operations, for example Bucket Sort, whose performance is measured as O(N).
+//According to Wikipedia and other sources, the performance of the Bucket Sort degrades with clustering; if many values occur close together,
+//they will all fall into a single bucket and be sorted slowly.
+//- What make bucketSort work slowly : major portion of processing time is wasted on creating objects that serve as buckets,
+//sorting data in them, and moving the sorted elements from the buckets to the resultant array.     
+//For large values we will prefer quicksort. 
+// For small values bucketSort can be preferable . It's depends on number of buckets . 
+     
+     
 	
 	//Fast example without sorting each bucket . We choose the same number of buckets as numbers .
 	 public int[] BucketSort(int[] items)
