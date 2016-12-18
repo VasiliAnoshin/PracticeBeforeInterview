@@ -81,7 +81,11 @@ public class Controller {
 		System.out.println(bs.RecursicveApproach(bsArray, 16, 0, bsArray.length-1));
 		System.out.println("BinarySearch (iterative approach), start sorting : ");
 		System.out.println(bs .IterativeApproach(bsArray, 0));
-		
+		//====================================================
+		System.out.println("BucketSort , start sorting : ");
+		BucketSort array = new BucketSort();
+		bsArray = new int[]{5,6,7,8,3,4,9,3,4,67,5,33,12,44};
+		array.BucketSort(bsArray);
 	}
 
 }
