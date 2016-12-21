@@ -245,7 +245,20 @@ public void printArrayInHorizontalMode(int[] arraySize){
 		 }		 
 		 return result;
 	 }
-	 
+	 //10.6 
+	 /*
+	   Imagine you have a 20GB file with one string per line . 
+	   Explain how you would sort the file .
+	   
+	   Answer : 
+	   When we have a limit of 20Gb that mean that not all the data should be bring 
+	   into the memory . So what we do we only bring part of the date into the memory .
+	   We do divide the file into the chunks of x megabyte each . Where x is the amount
+	   of memory we have available . Each chunk is sort separately and then saved back in the 
+	   file system . Once all the chunks are sorted we merge them . And at the end we get fully
+	   sorted file .
+	   This algoruthm is known as external sort .
+	  */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Chapter10Sorting sort = new Chapter10Sorting();
