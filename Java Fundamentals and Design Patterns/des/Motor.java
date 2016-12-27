@@ -6,7 +6,7 @@ public class Motor {
 		System.out.println(TryCatchPrinciples.proveIt());
 		System.out.println(TryCatchPrinciples.getANumber());
 		
-		GUI app = new GUI();
+		GUI app = new   GUI();
 		app.setVisible(true);
 	}
 
