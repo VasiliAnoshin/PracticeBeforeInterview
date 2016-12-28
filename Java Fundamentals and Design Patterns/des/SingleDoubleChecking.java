@@ -23,6 +23,8 @@ public class SingleDoubleChecking {
 			//perform sync on whole class , also we should avoid making 
 			//method syncronized i'ts make the process more slow for one time initialization 
 			synchronized (Singleton.class) {
+				//DoubleCheck is needed when two threads entered to the critical section and one of them create
+				// object , the second wait until first does't release . And the second check for the second thread to avoid double object initization.
 				if (singleton == null) {
 					singleton = new SingleDoubleChecking();
 				}
