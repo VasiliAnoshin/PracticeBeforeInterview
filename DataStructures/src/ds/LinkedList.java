@@ -2,12 +2,20 @@ package ds;
 
 public class LinkedList {
 	Object data;
-	Node Head;
+	Node head;
+	int size;
 	
-	public LinkedList(){
-		
+	public LinkedList(Object data){
+		head = null;
 	}
-		
+	
+	public void insert(Object data){
+		Node newNode = new Node(data);
+		newNode.Next = head;
+		head = newNode;
+		size++;
+	}
+	
 }
 
 class Node{
