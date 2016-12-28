@@ -5,7 +5,9 @@ public class SingletonThreadSafe {
 	
 	private SingletonThreadSafe(){
 		
-	}	
+	}
+	//when two threds entered critical section them will return initialized once time object. 
+	//static variables initialized before .
 	public static SingletonThreadSafe getInstance(){
 		return _instance;
 	}
