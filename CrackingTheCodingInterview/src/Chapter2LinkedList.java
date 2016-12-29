@@ -105,7 +105,7 @@ public class Chapter2LinkedList {
 			return size;
 		}
 		//#2.1 Write code to remove duplicates from an unsorted List 
-		// first approach using additional DataStructure for this purpose HashSet
+		// first approach using additional DataStructure for this purpose HashSet COMPLEXITY O(N) + Additional Space is used
 		public void removeDuplicateElements(){
 			Node temp = head;
 			HashSet<Object> hs = new HashSet();
@@ -117,6 +117,23 @@ public class Chapter2LinkedList {
 				}else{
 					temp.Next = temp.Next.Next;
 				}
+			}
+		}
+		//#2.1 Without additional dataStructure
+		public void removeDuplicates(){
+			Node first = head;
+			Node second = head;
+			
+			while(first.Next !=null){
+				while(second.Next !=null){
+					if(second.Next.Data == first.Data){
+						second.Next = second.Next.Next;						
+					}else{
+					second = second.Next;
+					}
+				}
+				first = first.Next;
+				second =first;
 			}
 		}
 		
@@ -142,8 +159,9 @@ public class Chapter2LinkedList {
 		linkedList.insert("Yoni");
 		linkedList.insert("Daniel");
 		linkedList.insert("Daniel");
+		linkedList.insert("Golcman");
 		linkedList.display();
-		linkedList.removeDuplicateElements();
+		linkedList.removeDuplicates();
 		linkedList.display();
 	}
 
