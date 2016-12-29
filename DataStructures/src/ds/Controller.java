@@ -88,7 +88,25 @@ public class Controller {
 		//array.BucketSort(bsArray);
 		array.SparseSort(bsArray);
 		//=====================================================
-		//==
+		LinkedListT linkList = new LinkedListT();
+		linkList.insert("Golcman");
+		linkList.insert("Vasili");
+		linkList.insert("Salomon");
+		linkList.insert("Daniel");
+		linkList.display();
+		linkList.insertNodeAtIndex("Yoni", 1);
+		linkList.display();
+		linkList.insertNodeAtIndex("Stanislav", 5);
+		linkList.display();
+		linkList.insertNodeAtIndex("Iehezkel", 8);
+		linkList.display();
+		linkList.deleteAtTheEnd();
+		linkList.display();
+		linkList.deleteNodeAtBegin();
+		linkList.display();
+		System.out.println();
+		System.out.println(linkList.SerchNodeIndex("Golcman"));
+		//========================================================
 	}
 
 }
