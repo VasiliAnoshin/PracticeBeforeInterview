@@ -136,6 +136,8 @@ public class Chapter2LinkedList {
 				second =first;
 			}
 		}
+		//#2.2 Without additional dataStructure
+		//Implement an algorithm to find the kth to last of a singly linkedList
 		
 	}
 
