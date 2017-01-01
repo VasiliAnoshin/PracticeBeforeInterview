@@ -161,8 +161,41 @@ public class Chapter2LinkedList {
 			return first;
 		}
 		//#2.3 Implement an algorithm to delete the middle of the linkedList
-		public void deleteTheMiddleOfTheLinkedList(){
-			
+		
+		//============================= Interview question ===============================
+		//given access to the head.
+		public boolean deleteTheMiddleOfTheLinkedList(){
+			//check that there is exist elements in the List
+			if(head == null){
+				return false;
+			}
+			//Two pointers one run as usually and the second run in two nodes each times. 
+			Node first  = head;
+			Node second = head;
+			// Critical case if LinkedList has more than 1 elements
+			if(head.Next != null){
+				second = second.Next.Next;
+				if(second == null){
+					first.Next = first.Next.Next;
+					return true;
+				}
+			}else {
+				return false;
+			}
+			//find and determine the middle of the LinkedList
+			while(second.Next != null){
+				first = first.Next;
+				second = second.Next;
+				if(second.Next == null){
+					break;
+				}else{
+					second = second.Next;
+				}				
+			}
+			//Remove the node from the List
+			Node temp = first.Next;
+			first.Next = temp.Next;
+			return true;
 		}
 	}
 
@@ -192,6 +225,18 @@ public class Chapter2LinkedList {
 		System.out.println();
 		System.out.println("Third node from the end : " + linkedList.GetTheNElementFromTheEnd(1).Data);
 		linkedList.display();
+		//======================
+		linkedList.deleteTheMiddleOfTheLinkedList();
+		linkedList.display();
+		linkedList.deleteTheMiddleOfTheLinkedList();
+		linkedList.display();
+		linkedList.deleteTheMiddleOfTheLinkedList();
+		linkedList.display();
+		linkedList.deleteTheMiddleOfTheLinkedList();
+		linkedList.deleteTheMiddleOfTheLinkedList();
+		linkedList.display();
+		linkedList.deleteTheMiddleOfTheLinkedList();
+		linkedList.display();				
 	}
 
 }
