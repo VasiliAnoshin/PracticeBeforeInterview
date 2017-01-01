@@ -160,7 +160,16 @@ public class Chapter2LinkedList {
 			}
 			return first;
 		}
-		//#2.3 Implement an algorithm to delete the middle of the linkedList
+		//#2.3 Implement an algorithm to delete the middle of the linkedList given link to this node only
+		public boolean DeleteNodeFromtheMiddle(Node nod){
+			if (nod == null || nod.Next!=null){
+				return false;
+			}
+			
+			nod.Data = nod.Next.Data;
+			nod.Next= nod.Next.Next;
+			return true;
+		}
 		
 		//============================= Interview question ===============================
 		//given access to the head.
@@ -236,7 +245,12 @@ public class Chapter2LinkedList {
 		linkedList.deleteTheMiddleOfTheLinkedList();
 		linkedList.display();
 		linkedList.deleteTheMiddleOfTheLinkedList();
-		linkedList.display();				
+		linkedList.display();			
+		linkedList.insert("Yoni");
+		linkedList.insert("Daniel");
+		linkedList.display();
+		linkedList.DeleteNodeFromtheMiddle(linkedList.Search("Yoni"));
+		linkedList.display();
 	}
 
 }
