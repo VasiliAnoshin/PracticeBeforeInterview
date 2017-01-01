@@ -170,6 +170,41 @@ public class Chapter2LinkedList {
 			nod.Next= nod.Next.Next;
 			return true;
 		}
+		//#2.4 write code to partition a a linkedList around a value x , such that all nodes 
+		//less than x come before all nodes greater than or equal to x .
+		public Node partirion(int number ){
+			//Create two LinkedList's
+			Node head = null;
+			Node tail = null;
+			
+			//Pointer to LinkedList
+			Node temp = this.head;
+			//LinkedList partition into the RightSide and theLeftSide 
+			// In LeftSide all the values are lower then pivot , in the rightSide all the values are greater than pivot
+			while(temp != null){
+				//Pointer to the next node in LinkList
+				Node next = temp.Next;
+				if((int)temp.Data < number ){
+					temp.Next = head;
+					head = temp;
+				}else{
+					temp.Next = tail;
+					tail = temp;
+				}
+				temp = next;
+			}
+			//If head is null return the tail 
+			if (head == null){
+				return tail;
+			}
+			Node tempNode = head;
+			//We should merge two parts of the list . Iterating until the end of the head and merge them .
+			while(tempNode.Next!=null){
+				tempNode = tempNode.Next;				
+			}
+			tempNode.Next = tail;
+			return head;
+		}
 		
 		//============================= Interview question ===============================
 		//given access to the head.
@@ -251,6 +286,20 @@ public class Chapter2LinkedList {
 		linkedList.display();
 		linkedList.DeleteNodeFromtheMiddle(linkedList.Search("Yoni"));
 		linkedList.display();
+		//===================== Partition 
+		Chapter2LinkedList newLinkList = new Chapter2LinkedList();
+		Chapter2LinkedList.LinkedListT2 linkedList2 = newLinkList.getInstance();
+		linkedList2.insert(4);
+		linkedList2.insert(8);
+		linkedList2.insert(19);
+		linkedList2.insert(45);
+		linkedList2.insert(6);
+		Node temp = linkedList2.partirion(9);
+		System.out.println();
+		while (temp != null) {
+			System.out.print("->" + temp.Data);
+			temp = temp.Next;
+		}		
 	}
 
 }
