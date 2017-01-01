@@ -138,7 +138,32 @@ public class Chapter2LinkedList {
 		}
 		//#2.2 Without additional dataStructure
 		//Implement an algorithm to find the kth to last of a singly linkedList
-		
+		public Node GetTheNElementFromTheEnd(int k ){
+			if(k <= 0){
+				return null;
+			}
+			
+			Node first = head;
+			Node second = head;
+			//Let's make interval between two Nodes in length of k
+			for(int i =0 ; i< k ; i++){				
+				// if there is no interval in such length return null
+				if (second == null){
+					return null; 
+				}
+				second = second.Next;
+			}
+			
+			while (second != null){
+				second = second.Next;
+				first = first.Next;
+			}
+			return first;
+		}
+		//#2.3 Implement an algorithm to delete the middle of the linkedList
+		public void deleteTheMiddleOfTheLinkedList(){
+			
+		}
 	}
 
 	class Node{
@@ -163,7 +188,9 @@ public class Chapter2LinkedList {
 		linkedList.insert("Daniel");
 		linkedList.insert("Golcman");
 		linkedList.display();
-		linkedList.removeDuplicates();
+		//linkedList.removeDuplicates();
+		System.out.println();
+		System.out.println("Third node from the end : " + linkedList.GetTheNElementFromTheEnd(1).Data);
 		linkedList.display();
 	}
 
