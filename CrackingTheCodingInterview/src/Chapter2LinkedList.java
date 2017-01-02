@@ -92,7 +92,7 @@ public class Chapter2LinkedList {
 				insertedNode.Next = tail;
 				size++;
 			}			
-		}		
+		}				
 		public void display() {
 			System.out.println("");
 			Node currNode = head;
@@ -206,10 +206,10 @@ public class Chapter2LinkedList {
 			return head;
 		}
 		//#2.5 Sum List .Two numbers represented by a LinkedList -each node contains a
-		//single digit Start from tail . 7->1->6 + 5->9->2 = that is 617 + 295 = 912
+		//single digit Start from tail . 7->1->6 + 5->9->2 = that is 617 + 295 = 912. 		
         public Node sumLinkedList(Node list1 , Node list2 , int carry){
         	//Exit condition 
-        	if(list1 == null && list2 ==null && carry == 0 ){
+        	if(list1 == null && list2 == null && carry == 0 ){
         		return null;
         	}
         	//First we should to add two left numbers but add them in the end that's why we will use recursion approach 
@@ -222,20 +222,74 @@ public class Chapter2LinkedList {
         	}
         	if(list2 != null){
         		value += (int)list2.Data;
-        	}
+        	}        	
         	
         	result = new Node(value % 10);
         	
         	if(list1 != null || list2 != null){
         	result.Next =	sumLinkedList((list1 == null ? null : list1.Next),
 						(list2 == null ? null : list2.Next),
-						value >= 10 ? 1:0);
-        	
+						value >= 10 ? 1:0);        	
 			}  
-
         	return result; 
-        } 
-		
+        }
+        public int Length(Node nod){
+        	Node temp = nod;
+        	int length = 0;
+        	if(temp == null){
+        		return 0;
+        	}
+        	while(temp != null){
+        		length++;
+        		temp = temp.Next;
+        	}
+        	
+        	return length;
+        }
+        //TODO 2.5 PART 2 Not implemented . important exercise . 
+    	//=========================== Second part preparation ============================
+    	class Node{
+    		Object Data;
+    		Node   Next;
+    		
+    		public Node(Object _data){
+    			this.Data = _data;
+    			this.Next = null;
+    		}
+    	}
+    	
+    	//2.6 Given a circular LinkedList implement an algorithm which returns the node in the begining 
+    	//of the loop : For example A -> B -> C -> D-> E -> C Should return C .
+    	//Classic interview question isLinkedList have loop . 
+    	public boolean LinkHasLoop(Node node){
+    		if(node == null ){
+    			return false;
+    		}
+    		//Creating two runners   		
+    		Node slow = node;
+    		Node fast = node;
+    		    		
+    		while(true){   			
+    			if(fast.Next == null){ 
+    				return false;
+    			}else{
+    				//2hop
+    				fast = node.Next.Next;
+    			}
+    			//1 hop
+    			slow = slow.Next;
+    			if(fast != null) {
+    				if(fast.Data == slow.Data){
+    					return true;
+    				}
+    			}else
+    			{
+    				return false;
+    			}    			
+    		}
+    	}
+    	
+    	
 		//============================= Interview question ===============================
 		//given access to the head.
 		public boolean deleteTheMiddleOfTheLinkedList(){
@@ -273,17 +327,7 @@ public class Chapter2LinkedList {
 		}
 	}
 
-	class Node{
-		Object Data;
-		Node   Next;
-		
-		public Node(Object _data){
-			this.Data = _data;
-			this.Next = null;
-		}
-	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Chapter2LinkedList chapter2 = new Chapter2LinkedList();
 		Chapter2LinkedList.LinkedListT2 linkedList = chapter2.getInstance();
 		//====================CHAPTER 2.1 ==========================================
@@ -324,7 +368,7 @@ public class Chapter2LinkedList {
 		linkedList2.insert(19);
 		linkedList2.insert(45);
 		linkedList2.insert(6);
-		Node temp = linkedList2.partirion(9);
+		Chapter2LinkedList.LinkedListT2.Node temp = linkedList2.partirion(9);
 		System.out.println();
 		while (temp != null) {
 			System.out.print("->" + temp.Data);
@@ -332,12 +376,8 @@ public class Chapter2LinkedList {
 		}
 		
 		//======================SumOfTwoLists
-		Chapter2LinkedList List1 = new Chapter2LinkedList();
-		Chapter2LinkedList.LinkedListT2 List1T = newLinkList.getInstance();
-		Chapter2LinkedList List2 = new Chapter2LinkedList();
+		Chapter2LinkedList.LinkedListT2 List1T = newLinkList.getInstance();		
 		Chapter2LinkedList.LinkedListT2 List2T = newLinkList.getInstance();		
-		Chapter2LinkedList List3 = new Chapter2LinkedList();
-		Chapter2LinkedList.LinkedListT2 List3T = newLinkList.getInstance();
 		
 		List1T.insert(6);
 		List1T.insert(1);
@@ -346,9 +386,9 @@ public class Chapter2LinkedList {
 		List2T.insert(2);
 		List2T.insert(9);
 		List2T.insert(5);
-		
-		Node nod = linkedList2.sumLinkedList(List1T.head, List2T.head ,0);
-
+		List2T.insert(1);
+	    Chapter2LinkedList.LinkedListT2.Node  nod = linkedList2.sumLinkedList(List1T.head, List2T.head ,0);
+			
 		
 	}
 
