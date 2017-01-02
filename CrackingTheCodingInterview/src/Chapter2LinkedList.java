@@ -233,6 +233,9 @@ public class Chapter2LinkedList {
 			}  
         	return result; 
         }
+       
+        //TODO 2.5 PART 2 Not implemented . important exercise . 
+    	//=========================== Second part preparation ============================
         public int Length(Node nod){
         	Node temp = nod;
         	int length = 0;
@@ -246,8 +249,6 @@ public class Chapter2LinkedList {
         	
         	return length;
         }
-        //TODO 2.5 PART 2 Not implemented . important exercise . 
-    	//=========================== Second part preparation ============================
     	class Node{
     		Object Data;
     		Node   Next;
@@ -274,7 +275,7 @@ public class Chapter2LinkedList {
     				return false;
     			}else{
     				//2hop
-    				fast = node.Next.Next;
+    				fast = fast.Next.Next;
     			}
     			//1 hop
     			slow = slow.Next;
@@ -287,6 +288,45 @@ public class Chapter2LinkedList {
     				return false;
     			}    			
     		}
+    	}
+    	//Find the begining of the loop , there is same solution with addition action. 
+    	//when we get collision point we should to complement the number of steps that 
+    	// fast pointer was inside the loop - there is the same number as first did from begining to start of the loop.    	
+    	public Node LoopBegining(Node startNode){
+    		if(startNode == null ){
+    			return null;
+    		}
+    		//Creating two runners , both of them point onto start Of the Loop. 		
+    		Node slow = startNode;
+    		Node fast = startNode;
+    		    		
+    		while(true){   			
+    			if(fast.Next == null){ 
+    				return null;
+    			}else{
+    				//2hop
+    				fast = fast.Next.Next;
+    			}
+    			//1 hop
+    			slow = slow.Next;
+    			if(fast != null) {
+    				//Collision found 
+    				if(fast.Data == slow.Data){
+    					break;
+    				}
+    			}else 
+    			{
+    				return null;
+    			}
+    		}
+    		//In this point two pointers are point into the same node in the LinkList ,
+    		//change speed of the fast to jump by one node each time and slow to start jump from the begining .
+    		fast = startNode;
+    		while(slow != fast){
+    			slow = slow.Next;
+    			fast = fast.Next;
+    		}
+    		return slow;
     	}
     	
     	
