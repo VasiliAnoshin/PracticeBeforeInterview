@@ -205,6 +205,36 @@ public class Chapter2LinkedList {
 			tempNode.Next = tail;
 			return head;
 		}
+		//#2.5 Sum List .Two numbers represented by a LinkedList -each node contains a
+		//single digit Start from tail . 7->1->6 + 5->9->2 = that is 617 + 295 = 912
+        public Node sumLinkedList(Node list1 , Node list2 , int carry){
+        	//Exit condition 
+        	if(list1 == null && list2 ==null && carry == 0 ){
+        		return null;
+        	}
+        	//First we should to add two left numbers but add them in the end that's why we will use recursion approach 
+        	//In each recursion level we give carry from the previous operation . And start create new list only when end is reached .        	
+        	int value = carry;
+        	Node result = null;
+        	//Compute the number from data of two nodes include carry. 
+        	if(list1 !=null){
+        		value += (int)list1.Data; 
+        	}
+        	if(list2 != null){
+        		value += (int)list2.Data;
+        	}
+        	
+        	result = new Node(value % 10);
+        	
+        	if(list1 != null || list2 != null){
+        	result.Next =	sumLinkedList((list1 == null ? null : list1.Next),
+						(list2 == null ? null : list2.Next),
+						value >= 10 ? 1:0);
+        	
+			}  
+
+        	return result; 
+        } 
 		
 		//============================= Interview question ===============================
 		//given access to the head.
@@ -299,7 +329,27 @@ public class Chapter2LinkedList {
 		while (temp != null) {
 			System.out.print("->" + temp.Data);
 			temp = temp.Next;
-		}		
+		}
+		
+		//======================SumOfTwoLists
+		Chapter2LinkedList List1 = new Chapter2LinkedList();
+		Chapter2LinkedList.LinkedListT2 List1T = newLinkList.getInstance();
+		Chapter2LinkedList List2 = new Chapter2LinkedList();
+		Chapter2LinkedList.LinkedListT2 List2T = newLinkList.getInstance();		
+		Chapter2LinkedList List3 = new Chapter2LinkedList();
+		Chapter2LinkedList.LinkedListT2 List3T = newLinkList.getInstance();
+		
+		List1T.insert(6);
+		List1T.insert(1);
+		List1T.insert(7);
+		
+		List2T.insert(2);
+		List2T.insert(9);
+		List2T.insert(5);
+		
+		Node nod = linkedList2.sumLinkedList(List1T.head, List2T.head ,0);
+
+		
 	}
 
 }
