@@ -1,9 +1,15 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Chapter2LinkedList {
+	private static boolean Person;
 	public LinkedListT2 getInstance(){
 		return new LinkedListT2();
 	} 
+	public Person getPerson(String name){
+		return new Person(name);
+	}
 
 	public class LinkedListT2 {
 		private Object data;
@@ -428,8 +434,35 @@ public class Chapter2LinkedList {
 		List2T.insert(5);
 		List2T.insert(1);
 	    Chapter2LinkedList.LinkedListT2.Node  nod = linkedList2.sumLinkedList(List1T.head, List2T.head ,0);
-			
 		
-	}
+	    
+	    //==============================Interview question======================================	
+	    //Foreach loop check : how it behave if remove one of his elements . 
+	    Person a = new Person("dan");
+	    Person b = new Person("Sal");
+	    Person[] arr = new Person[2];
+	    arr[0] = a;
+	    arr[1] = b;
+	    ArrayList arr2 = new ArrayList();
+	    arr2.add(a);
+	    arr2.add(b);
+	    
+	    /*
+	     * If remove an element during iterator it lead to exeption . Java documentation : 
+	     * The iterators returned by this class's iterator and listIterator methods are fail-fast:
+	     *  if the list is structurally modified at any time after the iterator is created, 
+	     *  in any way except through the iterator's own remove or add methods, the iterator 
+	     *  will throw a ConcurrentModificationException. Thus, in the face of concurrent 
+	     *  modification, the iterator fails quickly and cleanly, rather than risking arbitrary,
+	     *  non-deterministic behavior at an undetermined time in the future.
+	     */
+	    for(Object per : arr2){
+	    	//arr2.remove(per);
+	    }
+	    
+		//=========================================End of Interview qestion 
+	}	
+
+	
 
 }
