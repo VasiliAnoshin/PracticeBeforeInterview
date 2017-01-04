@@ -335,20 +335,27 @@ public class Chapter2LinkedList {
     		}
     		return slow;
     	}
-    	//2.7 Check if the LinkedList is palindrome
+    	/*
+    	 * 2.7 Check if the LinkedList is palindrome has two solutions . 
+    	 * 1) By reversing the LinkedList and check the first half of the new LinkedList is equal to first Half of the old LinkedList .
+    	 * 2)Implemented solution :  By using Fast/Slow technique
+    	 */
     	public boolean isPalindrom(Node node){
     		Node left = node;
     		Node right = node;
+    		//check if there is empty list or one element in the list
     		if(node == null || node.Next==null){
     			return false;
     		}
+    		//creating a stack LIFO .
     		Stack info = new Stack();
     		right = right.Next;
-    		info.push(left);
-    		while(true){
+    		info.push(left);    		
+    		while(true){    			
     			if(right.Next != null){
     				right = right.Next.Next;
     			}else{
+    				//check if number of elements in the list is even -> point to the middle
     				left = left.Next;
     				break;
     			}
@@ -357,6 +364,7 @@ public class Chapter2LinkedList {
     				left = left.Next;
     				info.push(left);
     			}else{
+    				//if number of the elements is odd. 
     				left =left.Next.Next;
     				break;
     			}
