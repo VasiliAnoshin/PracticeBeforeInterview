@@ -1,6 +1,7 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Stack;
 
 public class Chapter2LinkedList {
 	private static boolean Person;
@@ -334,7 +335,44 @@ public class Chapter2LinkedList {
     		}
     		return slow;
     	}
-    	
+    	//2.7 Check if the LinkedList is palindrome
+    	public boolean isPalindrom(Node node){
+    		Node left = node;
+    		Node right = node;
+    		if(node == null || node.Next==null){
+    			return false;
+    		}
+    		Stack info = new Stack();
+    		right = right.Next;
+    		info.push(left);
+    		while(true){
+    			if(right.Next != null){
+    				right = right.Next.Next;
+    			}else{
+    				left = left.Next;
+    				break;
+    			}
+    			
+    			if(right != null){
+    				left = left.Next;
+    				info.push(left);
+    			}else{
+    				left =left.Next.Next;
+    				break;
+    			}
+    		}
+    		
+    		while(!info.empty()){
+    			Node temp = (Node) info.pop();
+    			if(temp.Data == left.Data){
+    				left = left.Next;
+    				continue;
+    			}else{
+    				return false;
+    			}
+    		}
+    		return true;
+    	}
     	
 		//============================= Interview question ===============================
 		//given access to the head.
@@ -461,6 +499,14 @@ public class Chapter2LinkedList {
 	    }
 	    
 		//=========================================End of Interview qestion 
+	    Chapter2LinkedList.LinkedListT2 linkedList3 = chapter2.getInstance();
+	    linkedList3.insert("A");
+	    linkedList3.insert("A");
+	    linkedList3.insert("B");
+	    linkedList3.insert("B");
+	    System.out.println("\n");
+	    System.out.println(linkedList3.isPalindrom(linkedList3.head));
+	    
 	}	
 
 	
