@@ -34,12 +34,12 @@ public class CoreJavaQuestion {
 		 * objects so at run time an exception will be raised 
 		 */
 		
-		//2: What is output of A :  ? 
+		  //2: What is output of A :  ? 
 		  A obj=null;
 	      obj.show();
-	    //We can call static methods using reference variable which is pointing to null 
-	    //because static methods are class level so we can either call using class name and reference variable which is pointing to null.
-	    //3: what is the output  
+	      //We can call static methods using reference variable which is pointing to null 
+	      //because static methods are class level so we can either call using class name and reference variable which is pointing to null.
+	      //3: what is the output  
 	      System.out.println(a);
 	      //4: what will be the output : 
 	      try{
@@ -55,8 +55,8 @@ public class CoreJavaQuestion {
 	      System.out.println(i1 == i2);	    
 	      Integer i3 = 127;
 	      Integer i4 = 127;	    
-	     System.out.println(i3 == i4);
-	      
+	      System.out.println(i3 == i4);
+	     	     	      
 	}
 	public static class A{
 		 
