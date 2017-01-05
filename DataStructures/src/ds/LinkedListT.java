@@ -73,7 +73,7 @@ public class LinkedListT {
 		}				
 		if(position > size || position <= 0){
 			System.out.println("\n ALERT ");
-			System.out.print(" Wrong position inserted for " + data);
+			System.out.println(" Wrong position inserted for " + data);
 		}
 		if(position > 1 && position <= size ){
 			Node temp = head;
