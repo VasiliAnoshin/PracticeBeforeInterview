@@ -116,6 +116,10 @@ public class Controller {
 		bst.insert(19);
 		bst.insert(10);
 		bst.insert(10); //here should print false 
+		bst.display(bst.root);
+		//Check if this element exist in the BST
+		System.out.println("\n==========================");
+		System.out.println("Check if element exist in the tree , return -1 if it does't : " + bst.find(17));
 		
 	}
 
