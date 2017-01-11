@@ -106,7 +106,17 @@ public class Controller {
 		linkList.display();
 		System.out.println();
 		System.out.println(linkList.SerchNodeIndex("Golcman"));
-		//========================================================
+		//=============================BST============================
+		BinarySearchTree bst = new 	BinarySearchTree();
+		bst.insert(9);
+		bst.insert(17);
+		bst.insert(5);
+		bst.insert(7);
+		bst.insert(4);
+		bst.insert(19);
+		bst.insert(10);
+		bst.insert(10); //here should print false 
+		
 	}
 
 }
