@@ -120,7 +120,16 @@ public class Controller {
 		//Check if this element exist in the BST
 		System.out.println("\n==========================");
 		System.out.println("Check if element exist in the tree , return -1 if it does't : " + bst.find(17));
-		
+		bst.delete(20);
+		bst.delete(10);
+		bst.delete(17);
+		bst.delete(7);
+		bst.delete(5);
+		bst.delete(4);
+		bst.delete(9);
+		bst.insert(1);
+		bst.delete(1);
+		bst.display(bst.root);
 	}
 
 }
