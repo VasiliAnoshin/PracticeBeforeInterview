@@ -125,7 +125,42 @@ public class BinarySearchTree {
 			}
 		}
 		//Case if current have 2 childs 
+		if(current.left !=null && current.right != null){
+			TNode successor = getSuccessor(current);			
+			TNode nextLeft  = null;
+			TNode nextRight = null;
+			if (current == root){
+				current = successor;
+				current.left  = root.left;
+				current.right = root.right;
+			}else{
+				nextLeft = current.left;
+				nextRight =current.right;
+				current.data = successor.data;
+				current.right = nextRight;
+				current.left  = nextLeft;
+				return true;
+			}			
+		}
 		
 		return isLeftChild;
 	}	
+	public TNode getSuccessor(TNode node){
+		TNode tempNode = node.right;
+		TNode parent = node;
+		while(tempNode.left!=null){
+			parent = tempNode;
+			tempNode = tempNode.left;		
+		}
+		if (node.right != tempNode){
+			if(tempNode.right != null){
+				parent.left = tempNode.right;
+			}else{
+				parent.left = null;
+			}
+		}else{
+			parent.right = null;
+		}
+		return tempNode;
+	}
 }

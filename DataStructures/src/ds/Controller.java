@@ -129,6 +129,30 @@ public class Controller {
 		bst.delete(9);
 		bst.insert(1);
 		bst.delete(1);
+		//bst.display(bst.root);
+		bst.insert(21);
+		bst.insert(11);
+		//bst.display(bst.root);
+		//bst.delete(19);
+		//bst.display(bst.root);
+		bst.insert(22);
+		bst.insert(23);
+		bst.insert(24);
+		bst.insert(26);
+		//bst.display(bst.root);
+		bst.delete(21);
+		//bst.display(bst.root);
+		bst.delete(23);
+		//bst.display(bst.root);
+		bst.insert(5);
+		bst.insert(12);		
+		bst.delete(11);
+		bst.insert(13);
+		bst.insert(3);
+		bst.insert(6);
+		bst.delete(5);
+		bst.delete(12);
+		bst.delete(6);
 		bst.display(bst.root);
 	}
 
