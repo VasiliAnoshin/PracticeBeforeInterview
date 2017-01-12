@@ -32,7 +32,24 @@ public class Chapter4Trees {
 	    }
 	}
 	
-	
+	//4.2  Balanced tree : a height-balanced binary tree is defined as a binary 
+	//tree in which the depth of the two subtrees of every node never differ by more than 1
+	//write an algorithm to create a binary search tree with minimal height . 
+	public TreeNode sortedArrayToBST(final List<Integer> a) {
+			return getTreeNode(a, 0 , a.size()-1);
+		}
+		public TreeNode getTreeNode(List<Integer> arr ,int start , int end){
+		
+			if(end < start){
+				return null;
+			}
+			int middle = (start + end ) / 2;
+			TreeNode root = new TreeNode(arr.get(middle));
+			root.left  = getTreeNode(arr, start, middle - 1);
+			root.right = getTreeNode(arr, middle + 1, end);
+			return root;
+	}
+			
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 			DiGraph<Integer> graph = new DiGraph<Integer>();
