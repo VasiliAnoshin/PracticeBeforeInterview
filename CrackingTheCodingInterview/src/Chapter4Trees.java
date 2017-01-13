@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Chapter4Trees {
 	// 4.1 Route between nodes : given a directed graph , design an algorithm to find out whether 
@@ -135,6 +136,39 @@ public class Chapter4Trees {
 			}		
 			return 1;
 		}
+		//============== Second Approach by interviewbit.com preorder solution .
+		public int isValidBST2(TreeNode A) {
+		    
+		    if (A == null)
+		        return 0;
+		        
+		    ArrayList<Integer> inorder = new ArrayList<>();
+		    Stack<TreeNode> stack = new Stack<>();
+		    
+		    TreeNode node = A;
+		    addNodes(node, stack);
+		    
+		    while (!stack.isEmpty()) {
+		        node = stack.pop();
+		        inorder.add(node.val);
+		        node = node.right;
+		        addNodes(node, stack);
+		    }		    
+		    for (int i = 1; i < inorder.size(); i++) {
+		        int val = inorder.get(i);
+		        int prev = inorder.get(i - 1);
+		        if (val <= prev)
+		            return 0;
+		    }		    
+		    return 1;		    
+		}		
+		private void addNodes(TreeNode node, Stack<TreeNode> stack) {
+		    while (node != null) {
+		        stack.push(node);
+		        node = node.left;
+		    }
+		}
+		
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 			DiGraph<Integer> graph = new DiGraph<Integer>();
@@ -152,7 +186,7 @@ public class Chapter4Trees {
 	        node.right.right = new TreeNode(15);
 	        node.right.left = new TreeNode(13);		
 	        tree.flatten(node);
-	        //==============================================
+	        //=====================#4.5==========================
 	        TreeNode node2 = new TreeNode(74);
 	        node.left = null;
 	        node2.right = new TreeNode(153);
@@ -160,22 +194,16 @@ public class Chapter4Trees {
 	        node2.right.right.right = new TreeNode(1);
 	        node2.right.right.left = new TreeNode(1);
 	        int a = tree.isValidBST(node2);
-	        System.out.println(a);
+	        System.out.println("Check is valid BST 0 or 1 should return as validation : " + a);
 	        
 	        TreeNode node3 = new TreeNode(11);
 	        node3.right = new TreeNode(2);
-	        //node3.right.right = new TreeNode(3);
 	        node3.right.left = new TreeNode(3);
-	        //node3.right.right.right = new TreeNode(-1);
-	        //node3.right.right.left = new TreeNode(-1);
-	        node.left = new TreeNode(3);
-	        node.left.left = new TreeNode(4);
-	        node.left.right =new TreeNode(1);
-	        //node.left.left.left = new TreeNode(1);
-	        //node.left.left.right = new TreeNode(3);
+	        node3.left = new TreeNode(3);
+	        node3.left.left = new TreeNode(2);
+	        node3.left.right =new TreeNode(1);
 	        
-	        int b = tree.isValidBST(node2);
-	        System.out.println(b);
+	        int b = tree.isValidBST2(node3);
+	        System.out.println("Check is valid BST 0(f) or 1(t) should return as validation : " + b);	        
 	}
-
 }
