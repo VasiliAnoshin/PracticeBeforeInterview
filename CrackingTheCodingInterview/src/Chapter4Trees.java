@@ -1,12 +1,21 @@
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 import java.util.Stack;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
+
+import com.sun.javafx.collections.MappingChange.Map;
 
 public class Chapter4Trees {
 	//For checkPoint
+	private Hashtable<Integer,Integer>  messagesList = new Hashtable<Integer,Integer>();
+	private static final int  counter = 1;
 	public enum condition {
 		True (1) , 
 		False(0);
@@ -205,6 +214,33 @@ public class Chapter4Trees {
 			}
 			return false;
 		}
+		//#4 question : 
+		private void getMessage(Message msg){
+			try{	
+			//if(msg.message!= null && msg !=null){							
+					if(messagesList.containsKey(msg.sender)){
+					   messagesList.put(msg.sender , messagesList.get(msg.sender)+1);
+					}
+					else{
+						messagesList.put(msg.sender, counter);
+					}				
+				//}
+			}catch(NullPointerException ex){
+				System.out.println("There is no mesage" + ex.getMessage());
+			}
+		}
+		public ArrayList getAdressList(){
+			ArrayList senderList = new ArrayList();
+			Enumeration<Integer> enumKey = messagesList.keys();
+			while(enumKey.hasMoreElements()) {
+			    Integer key = enumKey.nextElement();
+			    Integer val = messagesList.get(key);
+			    if(val / messagesList.size() >= 0.1){
+			    	senderList.add(key);
+			    }
+			}
+			return senderList;
+		}
 		
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -242,5 +278,20 @@ public class Chapter4Trees {
 	        
 	        int b = tree.isValidBST2(node3);
 	        System.out.println("Check is valid BST 0(f) or 1(t) should return as validation : " + b);	        
+	        Message msg = new Message(123,124,"BlaBla");
+	        Message msg1 =new Message(125,126,"BiBi");
+	        Message msg3 = new Message(127,128,"HeyHey");
+	        Message msg4 = new Message(123,124,"Baba");
+	        
+	        Chapter4Trees checkPoint = new Chapter4Trees();
+	        checkPoint.getMessage(null);
+	        checkPoint.getMessage(msg4);
+	        checkPoint.getMessage(msg1);
+	        checkPoint.getMessage(msg3);
+	        checkPoint.getMessage(msg4);
+	        checkPoint.getMessage(msg);
+	        
+	        checkPoint.getAdressList();
+	        
 	}
 }
