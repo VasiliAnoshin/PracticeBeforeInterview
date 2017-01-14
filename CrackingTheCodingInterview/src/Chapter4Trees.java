@@ -6,6 +6,16 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class Chapter4Trees {
+	//For checkPoint
+	public enum condition {
+		True (1) , 
+		False(0);
+		public int value;
+		
+		private condition(int value){
+			this.value = value;
+		}
+	}
 	// 4.1 Route between nodes : given a directed graph , design an algorithm to find out whether 
 	//the is a root between two nodes : 
 	public static class DiGraph<T>{
@@ -167,6 +177,33 @@ public class Chapter4Trees {
 		        stack.push(node);
 		        node = node.left;
 		    }
+		}
+		/***
+		 * checkPoint preparation question , you should check if sender or reciever adress existing in the system
+		 * 
+		 */
+		public condition isVirusExist(TreeNode node , int sender , int reciever){
+			if(isExist(node ,sender) || isExist(node ,reciever)){
+				return condition.False;
+			}else
+				return condition.True;
+		} 
+		private boolean isExist(TreeNode node , int adress){
+			if(node == null){
+				return false;
+			}
+			while(node!=null){
+				if (adress == node.val){
+					return true;
+				}
+				if(adress > node.val){
+					node = node.right;
+				}
+				if(adress < node.val){
+					node = node.left;
+				}
+			}
+			return false;
 		}
 		
 	public static void main(String[] args) {
