@@ -241,6 +241,16 @@ public class Chapter4Trees {
 			}
 			return senderList;
 		}
+		public ArrayList getAdressListIteratorApproach(){
+			ArrayList senderList = new ArrayList();
+			 for(Integer key : messagesList.keySet()){
+				 Integer value = messagesList.get(key);
+				 if(value / messagesList.size() >= 0.1){
+				    	senderList.add(key);
+				    }
+			 }
+			 return senderList;
+		}
 		
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -291,7 +301,7 @@ public class Chapter4Trees {
 	        checkPoint.getMessage(msg4);
 	        checkPoint.getMessage(msg);
 	        
-	        checkPoint.getAdressList();
+	        checkPoint.getAdressListIteratorApproach();
 	        
 	}
 }
