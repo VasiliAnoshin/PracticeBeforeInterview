@@ -5,7 +5,6 @@ import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.Set;
 import java.util.Stack;
 
 import javax.swing.text.html.HTMLDocument.Iterator;
@@ -292,7 +291,7 @@ public class Chapter4Trees {
 	        Message msg1 =new Message(125,126,"BiBi");
 	        Message msg3 = new Message(127,128,"HeyHey");
 	        Message msg4 = new Message(123,124,"Baba");
-	        
+	        //====================CheckPoint preparation ==============================
 	        Chapter4Trees checkPoint = new Chapter4Trees();
 	        checkPoint.getMessage(null);
 	        checkPoint.getMessage(msg4);
