@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -6,10 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
+import java.util.Collections;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
-
-import com.sun.javafx.collections.MappingChange.Map;
 
 public class Chapter4Trees {
 	//For checkPoint
@@ -251,6 +250,7 @@ public class Chapter4Trees {
 			 return senderList;
 		}
 		
+		
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 			DiGraph<Integer> graph = new DiGraph<Integer>();
@@ -301,6 +301,6 @@ public class Chapter4Trees {
 	        checkPoint.getMessage(msg);
 	        
 	        checkPoint.getAdressListIteratorApproach();
-	        
+	        	        
 	}
 }
