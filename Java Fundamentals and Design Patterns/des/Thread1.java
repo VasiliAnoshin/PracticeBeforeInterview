@@ -47,6 +47,7 @@ class Processor extends Thread{
 	private volatile boolean running  = true;
 	
 	public void shutdown(){
+		
 		this.running = false;
 	}
 	public void run(){
