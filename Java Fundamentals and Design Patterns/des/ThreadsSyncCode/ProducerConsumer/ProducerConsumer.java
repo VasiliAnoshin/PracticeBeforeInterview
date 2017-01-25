@@ -1,4 +1,4 @@
-package ThreadsSyncCode;
+package ThreadsSyncCode.ProducerConsumer;
 
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;

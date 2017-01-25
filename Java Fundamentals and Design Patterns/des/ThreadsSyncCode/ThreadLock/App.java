@@ -1,6 +1,4 @@
-
-
-import ThreadsSyncCode.Worker;
+package ThreadsSyncCode.ThreadLock;
 
 public class App {
 

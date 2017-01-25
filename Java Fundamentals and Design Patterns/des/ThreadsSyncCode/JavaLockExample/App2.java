@@ -1,4 +1,4 @@
-package ThreadsSyncCode;
+package ThreadsSyncCode.JavaLockExample;
 
 public class App2 {
 

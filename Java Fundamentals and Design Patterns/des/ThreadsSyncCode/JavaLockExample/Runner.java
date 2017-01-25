@@ -1,4 +1,4 @@
-package ThreadsSyncCode;
+package ThreadsSyncCode.JavaLockExample;
 
 import java.util.Scanner;
 import java.util.concurrent.locks.Condition;

@@ -1,4 +1,4 @@
-package ThreadsSyncCode;
+package ThreadsSyncCode.ThreadLock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class Worker {
 			list1.add(random.nextInt(100));
 		}
 	}
-	public synchronized void stageTwo(){
+	public void stageTwo(){
 		synchronized(lock2){
 			try {
 				Thread.sleep(1);

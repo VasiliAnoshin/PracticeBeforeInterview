@@ -1,4 +1,4 @@
-package ThreadsSyncCode;
+package ThreadsSyncCode.LatchDownEx;
 
 import java.util.concurrent.CountDownLatch;
 
