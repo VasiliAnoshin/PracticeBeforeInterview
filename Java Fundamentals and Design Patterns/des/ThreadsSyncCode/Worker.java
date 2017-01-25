@@ -7,9 +7,10 @@ import java.util.Random;
 /**The problem in this code that without syncronized method both StageOne and StageTwo increment
    the variable but exist racecondition and both lists don't include 2000 elements. 
    But the still a problem : when we set sync method on both StageOne and StageTwo each time when one 
-   of them take control on object (every object in java has monitor lock ) and take controle on whole object .
-   To prevent this we create two variables that lock1 and lock2 that preventing to enter the stricted area .
+   of them take control on object (every object in java has monitor lock )  take controle on whole object .
+   To prevent this we create two variables that lock1 and lock2 separately that preventing to enter the stricted area .
 **/
+//START FROM APP class
 public class Worker {
 	private Object lock1 = new Object();
 	private Object lock2 = new Object();
