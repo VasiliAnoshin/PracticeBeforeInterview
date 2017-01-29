@@ -1,11 +1,12 @@
 package Dining;
 
-class Philosofer extends Thread{
+public class Philosofer implements Runnable{
 	private int bites = 10;
 	private Chopstick left , right;
+	static int counter = 1;
 	
 	public Philosofer(Chopstick left , Chopstick right){
-		this.left = left;
+		this.left = left;		
 		this.right = right;
 	}
 	public void eat(){
@@ -18,16 +19,18 @@ class Philosofer extends Thread{
 		right.PickUp();
 	}
 	public void PutDown(){
-		left.PutDown();
 		right.PutDown();
+		left.PutDown();		
 	}
 	//Do nothing (Jevat) .
 	public void Chew(){
-		
+		System.out.println("Juyu" + counter++);
 	} 
-	//public void run(){
-	//	for(int i =0; i< bites; i++){
-	//		eat();
-	//	}
-	//}
+
+	@Override
+	public void run() {
+		for(int i =0; i< bites; i++){
+			eat();
+		}		
+	}
 }
