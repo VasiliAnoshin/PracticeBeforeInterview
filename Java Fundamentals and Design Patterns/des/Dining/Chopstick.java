@@ -10,11 +10,15 @@ public class Chopstick {
 		lock = new ReentrantLock();
 	}
 	
-	public void PickUp(){
-		this.lock.lock();
-	}
+	//public void PickUp(){
+	//	this.lock.lock();
+	//}
 	public void PutDown(){
 		this.lock.unlock();
+	}
+	//The first solution is :  All or Nothing 
+	public boolean pickUp(){
+		return lock.tryLock();
 	}
 	
 }
