@@ -43,7 +43,25 @@ public class RemoveDuplicatesfromSortedList2 {
 	    }
 	    return a;
 	}
-	
+	//Official solution 
+	public ListNode deleteDuplicates2(ListNode head){
+		   if(head == null) return head;
+	        ListNode helper = new ListNode(0);
+	        helper.next = head;
+	        ListNode pre = helper, cur = head;
+	        while(cur!=null)
+	        {
+	            while(cur.next!=null && pre.next.val==cur.next.val)
+	                cur = cur.next;
+	            if (pre.next == cur) 
+	                pre = pre.next;
+	            else 
+	                pre.next = cur.next;
+	            cur = cur.next;
+	        }
+	        return helper.next;
+		
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ListNode node3 = new ListNode(1);
@@ -65,6 +83,21 @@ public class RemoveDuplicatesfromSortedList2 {
 			System.out.print(rotatedList.val + "->" );
 			rotatedList =  rotatedList.next;
 		}
+		
+		ListNode node4 = new ListNode(1);
+		node4.next = new ListNode(1);
+		node4.next.next = new ListNode(1);
+		node4.next.next.next = new ListNode(2);
+		node4.next.next.next.next = new ListNode(3);
+		node4.next.next.next.next.next = new ListNode(3);
+		
+		ListNode rotatedList2 = rl.deleteDuplicates2(node4);
+		System.out.println("Ready to print");
+		while(rotatedList2 != null){
+			System.out.print(rotatedList2.val + "->" );
+			rotatedList2 =  rotatedList2.next;
+		}
+		
 	}
 
 }
