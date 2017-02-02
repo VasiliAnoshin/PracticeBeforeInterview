@@ -46,6 +46,36 @@ public class rotateListFromAmazon {
 	    3) Do the rotation
 	 */
 	public ListNode rotateRight1(ListNode a, int b) {
+		if(a==null){return null;}
+		if(b==0 || b < 0){return a;}
+		if(a.next == null){return a;}
+		ListNode runner = a;
+		int length = 0;
+		//Get the current length
+		while(runner !=null){
+			runner = runner.next;
+			length++;
+		}
+		//The n number can be much more that number of nodes in the linkedList that's why we wan't to get module of the number 
+		int pointer = b % length;
+		//If number of permutations equal to number of elements in the List return the same list		
+		if(pointer == 0){
+			return a;
+		}
+
+		runner = a;
+		ListNode prev = null;
 		
+		for (int i = 0; i < (length - pointer); i++){
+			prev = runner;
+			runner = runner.next;
+		}
+		prev.next =null;
+		ListNode head = runner;
+		while(runner.next != null){
+			runner = runner.next;
+		}
+		runner.next = a;
+		return head;
 	}
 }
