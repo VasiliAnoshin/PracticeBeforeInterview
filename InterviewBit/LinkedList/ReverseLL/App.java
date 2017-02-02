@@ -51,5 +51,23 @@ public class App {
 			System.out.print(reversedList3.val + "->" );
 			reversedList3 =  reversedList3.next;
 		}
+		
+		//==================RotatedListAmazon ==================
+		System.out.println("\nRotate List");
+		rotateListFromAmazon rlist = new rotateListFromAmazon();
+		ListNode node3 = new ListNode(1);
+		node3.next = new ListNode(2);
+		node3.next.next = new ListNode(3);
+		node3.next.next.next = new ListNode(4);
+		node3.next.next.next.next = new ListNode(5);
+		
+		ListNode node4 = new ListNode(1);
+		ListNode rotatedList = rlist.rotateRight(node4 , 1);
+		
+		System.out.println("Ready to print");
+		while(rotatedList!= null){
+			System.out.print(rotatedList.val + "->" );
+			rotatedList =  rotatedList.next;
+		}
 	}
 }
