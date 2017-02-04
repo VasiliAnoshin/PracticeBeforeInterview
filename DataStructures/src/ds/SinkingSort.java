@@ -11,9 +11,9 @@ public class SinkingSort {
 			for(int j = current + 1; j< arrOfNumbers.length; j++ ){
 				if(arrOfNumbers[min] > arrOfNumbers[j]){
 					min = j;
-				}
+				}			
+			}
 			swap(arrOfNumbers , current , min); 
-			}			
 		}
 		return arrOfNumbers;
 	}
