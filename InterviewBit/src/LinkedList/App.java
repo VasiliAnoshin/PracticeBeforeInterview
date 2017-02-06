@@ -1,5 +1,4 @@
-package ReverseLL;
-
+package LinkedList;
 
 public class App {
 

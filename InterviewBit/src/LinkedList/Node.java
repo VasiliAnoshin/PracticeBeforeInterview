@@ -1,4 +1,4 @@
-package ReverseLL;
+package LinkedList;
 
 class Node{
 	Object Data;

@@ -12,7 +12,7 @@
  * @author BenFranklin
  *
  */
-package ReverseLL;
+package LinkedList;
 
 public class reverseIndexedLink {
 	public ListNode reverseBetween(ListNode a, int m, int n) {
