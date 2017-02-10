@@ -53,6 +53,28 @@ public class SortByColor {
 		
 	}
 	
+public void sortColors2(ArrayList<Integer> A) {
+	    
+	    int white = 0;
+	    int red = A.size() - 1;
+	    
+	    for (int mid = 0; mid <= red;) {
+	        if (A.get(mid) == 0) {
+	            int temp = A.get(white);
+	            A.set(white, 0);
+	            A.set(mid, temp);
+	            white++;
+	            mid++;
+	        } else if (A.get(mid) == 2) {
+	            int temp = A.get(red);
+	            A.set(red, 2);
+	            A.set(mid, temp);
+	            red--;
+	        } else {
+	        	mid++;
+	        }
+	    }
+}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
