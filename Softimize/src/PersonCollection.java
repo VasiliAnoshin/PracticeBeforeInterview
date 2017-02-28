@@ -12,11 +12,11 @@ public class PersonCollection<T> {
 	//linkedList size
 	private int size;
 	//list of Subscribers 
-	private List<Observer> subscribers;
+	private List<Observer<T>> subscribers;
 	private Comparator<T> personComparator;
 	
 	public PersonCollection(Comparator<T> comparator ){
-		this.subscribers = new ArrayList();
+		this.subscribers = new ArrayList<Observer<T>>();
 		this.size = 0;
 		this.personCollectionHead = null;
 		this.personComparator = comparator;
@@ -36,28 +36,28 @@ public class PersonCollection<T> {
 			personCollectionHead = currentPersonInList;
 		}else{
 			//if currentPerson is not empty
-            Node<T> parent = null;
+            Node<T> prev = null;
             while (currentPersonInList != null) {
                 if (personComparator.compare(person, currentPersonInList.getData()) > 0) {                    
                     newPerson.setNext(currentPersonInList);
-                    if (parent != null) {
-                        parent.setNext(newPerson);
+                    if (prev != null) {
+                        prev.setNext(newPerson);
                     } else {
                         this.personCollectionHead = newPerson;
                     }
-                    parent = null;
+                    prev = null;
                     break;
                 }
-                parent = currentPersonInList;
+                prev = currentPersonInList;
                 currentPersonInList = currentPersonInList.getNext();
             }            
             //if the new person in the tail (Last element in the list)
-            if (parent != null) {
-                parent.setNext(newPerson);
+            if (prev != null) {
+                prev.setNext(newPerson);
             }			
 		}
 		this.size++;
-		notifyToSubscribersThatPersonWasRemoved(person);
+		notifyToSubscribersThatPersonWasAdded((T) person);
 	}
 	/**
 	 * Remove - removes the person object with the maximum value in LinkedList of personCollection and returns it.
@@ -67,8 +67,7 @@ public class PersonCollection<T> {
 	public synchronized T Remove(){
 		if (this.size == 0){
 			return null;
-		}
-		
+		}		
 		T person = this.personCollectionHead.getData();
 	    Node<T> nextPersonInTheList = this.personCollectionHead.getNext();
 	    this.personCollectionHead.setNext(null);
@@ -81,25 +80,24 @@ public class PersonCollection<T> {
 	 * Publish - publishes a notification to subscriber objects upon any Add/Remove.
 	 * @param person
 	 */
-	 private void notifyToSubscribersThatPersonWasRemoved(T person) {
-	     for (Observer subscriber : subscribers) {
+	private void notifyToSubscribersThatPersonWasRemoved(T person) {
+	     for (Observer<T> subscriber : subscribers) {
 	    	 subscriber.Remove(person);
 	        }
 	 }
-	 private void notifyToSubscribersThatPersonWasAdded(Person person) {
-	     for (Observer subscriber : subscribers) {
-	    	 subscriber.Add(person);
+	private void notifyToSubscribersThatPersonWasAdded(T person) {
+	     for (Observer<T> subscriber : subscribers) {
+	    	 subscriber.Add((T) person);
 	     }
 	 }	 
 	 /**
 	  * Add subscriber to list of subscribers .
 	  */
-	 public synchronized void addSubscriber(Observer subscriber) {
+	 public synchronized void addSubscriber(Observer<T> subscriber) {
 		 if (subscriber != null) {
 			 this.subscribers.add(subscriber);
 	      }
-	 }
-	 
+	 }	 
 	 public Node<T> getPersonHead(){
 		 return this.personCollectionHead;
 	 }

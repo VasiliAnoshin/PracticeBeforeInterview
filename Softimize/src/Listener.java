@@ -1,5 +1,5 @@
 /**
- * Listaener class is actually subscriber that implement Observer interface .
+ * Listener class is actually subscriber that implement Observer interface .
  * @author VasiliAnoshin
  *
  * @param <T>
@@ -7,7 +7,7 @@
 
 public class Listener<T> implements Observer{
 	
-	T person;
+	private T person;
 	
 	public Listener() {
         this.person = null;

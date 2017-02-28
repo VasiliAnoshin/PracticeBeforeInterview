@@ -1,4 +1,9 @@
-
+/**
+ * Observer
+ * @author AnoshinVasili
+ *
+ * @param <T>
+ */
 public interface Observer<T> {
 	 void Add(T person);
 
