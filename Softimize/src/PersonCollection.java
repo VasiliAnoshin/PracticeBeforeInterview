@@ -9,15 +9,13 @@ import java.util.List;
 public class PersonCollection<T> {
 	//Pointer to head of LinkedList
 	private Node<T> personCollectionHead;
-	//linkedList size
-	private int size;
 	//list of Subscribers 
 	private List<Observer<T>> subscribers;
+	//PersonComparator is actually an algorithm that decide how to iterate on LinkedList.
 	private Comparator<T> personComparator;
 	
 	public PersonCollection(Comparator<T> comparator ){
-		this.subscribers = new ArrayList<Observer<T>>();
-		this.size = 0;
+		this.subscribers = new ArrayList<Observer<T>>();	
 		this.personCollectionHead = null;
 		this.personComparator = comparator;
 	}
@@ -56,7 +54,6 @@ public class PersonCollection<T> {
                 prev.setNext(newPerson);
             }			
 		}
-		this.size++;
 		notifyToSubscribersThatPersonWasAdded((T) person);
 	}
 	/**
@@ -65,15 +62,14 @@ public class PersonCollection<T> {
 	 * @return T person
 	 */
 	public synchronized T Remove(){
-		if (this.size == 0){
+		if (this.personCollectionHead == null){
 			return null;
 		}		
 		T person = this.personCollectionHead.getData();
 	    Node<T> nextPersonInTheList = this.personCollectionHead.getNext();
 	    this.personCollectionHead.setNext(null);
 	    this.personCollectionHead = nextPersonInTheList;	   
-	    notifyToSubscribersThatPersonWasRemoved(person);
-	    this.size--;
+	    notifyToSubscribersThatPersonWasRemoved(person);	   
 	    return person;		
 	}
 	/**

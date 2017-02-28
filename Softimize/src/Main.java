@@ -34,7 +34,7 @@ public class Main {
 	    System.out.println("\n");
 	    persons = new PersonCollection<>(personComparatorByHeight);
 	    //Create and Add subscriber
-	    Listener subscriber = new Listener<Person>();	
+	    Listener<Person> subscriber = new Listener<Person>();	
 	    persons.addSubscriber(subscriber);
 	    p = new Person1("Fil","Coutinho",1234,181);
 	    p1 = new Person1("Cristiano","Ronaldo",1233,183);
@@ -60,8 +60,7 @@ public class Main {
 			temp = temp.getNext();
 		}
 	    //Subscriber get data about the last removed person . 
-	    Person person = (Person) subscriber.getPerson();
-	    System.out.println("\nSubscriber : Instance that was removed is : " + person.getFirstName() + person.getLastName());
+	    System.out.println("\nSubscriber : Instance that was removed is : " + subscriber.getPerson().getFirstName() + subscriber.getPerson().getLastName());
 	}
 
 }
