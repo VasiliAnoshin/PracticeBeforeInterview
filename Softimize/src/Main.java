@@ -3,7 +3,7 @@ import java.util.Comparator;
 public class Main {
 		
 	public static void main(String[] args) {
-		// Comparator that comapre by ID
+		// Comparator that compare by ID
 	    Comparator<Person> personComparator = new Comparator<Person>() {	        
 			public int compare(Person p1, Person p2) {
 	            return p1.getId() - p2.getId();
@@ -25,7 +25,7 @@ public class Main {
 			System.out.print("->" +temp.getData().getFirstName() + " " + temp.getData().getLastName() + " id:" + temp.getData().getId());
 			temp = temp.getNext();
 		}
-		// Comparator that comapre by Height
+		// Comparator that compare by Height
 	    Comparator<Person> personComparatorByHeight = new Comparator<Person>() {
 			public int compare(Person p1, Person p2) {
 	            return p1.getHeight() - p2.getHeight();

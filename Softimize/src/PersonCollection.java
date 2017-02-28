@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.List;
 /**
  * PersonCollections class .
- * @author Vasili Anoshin
+ * @author VasiliAnoshin
  *
  */
 public class PersonCollection<T> {
