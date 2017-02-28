@@ -1,6 +1,6 @@
 
-public interface Observer {
-	 <T> void Add(T person);
+public interface Observer<T> {
+	 void Add(T person);
 
-     <T> void Remove(T person);
+     void Remove(T person);
 }

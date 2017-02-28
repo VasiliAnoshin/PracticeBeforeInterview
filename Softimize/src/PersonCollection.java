@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-
 /**
  * PersonCollections class .
- * @author BenFranklin
+ * @author Vasili Anoshin
  *
  */
 public class PersonCollection<T> {
@@ -28,40 +27,34 @@ public class PersonCollection<T> {
 	 * @param person
 	 */
 	public synchronized void Add(T person){
-		Node<T> currentPerson = personCollectionHead;
+		Node<T> currentPersonInList = personCollectionHead;
+		Node<T> newPerson = new Node<T>(person);
 		//If currentPerson is empty
-		if(currentPerson == null){
-			currentPerson = new Node<T>(person);
-			currentPerson.setNext(personCollectionHead);
-			personCollectionHead = currentPerson;
+		if(currentPersonInList == null){
+			currentPersonInList = new Node<T>(person);
+			currentPersonInList.setNext(personCollectionHead);
+			personCollectionHead = currentPersonInList;
 		}else{
-			  //if currentPerson is nor empty
+			//if currentPerson is not empty
             Node<T> parent = null;
-            while (currentPerson != null) {
-                if (personComparator.compare(person, currentPerson.getData()) > 0) {
-
-                    Node<T> newNode = new Node<T>(person);
-                    newNode.setNext(currentPerson);
-
+            while (currentPersonInList != null) {
+                if (personComparator.compare(person, currentPersonInList.getData()) > 0) {                    
+                    newPerson.setNext(currentPersonInList);
                     if (parent != null) {
-                        parent.setNext(newNode);
+                        parent.setNext(newPerson);
                     } else {
-                        this.personCollectionHead = newNode;
+                        this.personCollectionHead = newPerson;
                     }
-
                     parent = null;
                     break;
                 }
-                parent = currentPerson;
-                currentPerson = currentPerson.getNext();
-            }
-
-            //in case that the new person is the smallest
+                parent = currentPersonInList;
+                currentPersonInList = currentPersonInList.getNext();
+            }            
+            //if the new person in the tail (Last element in the list)
             if (parent != null) {
-                Node<T> newNode = new Node<T>(person);
-                parent.setNext(newNode);
-            }
-			
+                parent.setNext(newPerson);
+            }			
 		}
 		this.size++;
 		notifyToSubscribersThatPersonWasRemoved(person);
@@ -105,5 +98,9 @@ public class PersonCollection<T> {
 		 if (subscriber != null) {
 			 this.subscribers.add(subscriber);
 	      }
+	 }
+	 
+	 public Node<T> getPersonHead(){
+		 return this.personCollectionHead;
 	 }
 }

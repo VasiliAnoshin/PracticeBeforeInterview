@@ -1,7 +1,7 @@
 /**
  * PersonCollection presented as LinkedList where each item hold Person data. 
  * 
- * @author BenFranklin
+ * @author Vasili Anoshin
  */
 public class Node<T> {
 	
