@@ -16,8 +16,8 @@ public class Node<T> {
 	}
 	// another Node constructor if we want to specify the node to point to.
 	public Node(T dataValue, Node<T> nextValue) {
-		next = nextValue;
-		data = dataValue;
+		this.next = nextValue;
+		this.data = dataValue;
 	}
 	// these methods should be self-explanatory
 	public T getData() {
@@ -30,6 +30,6 @@ public class Node<T> {
 		next = nextValue;
 	}
 	public void setData(T dataValue) {
-		data = dataValue;
+		this.data = dataValue;
 	}
 }
