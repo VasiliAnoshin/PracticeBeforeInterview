@@ -1,6 +1,6 @@
 package Iterator;
 
-public class DinerMenu {
+public class DinerMenu  {
 	static final int MAX_ITEMS = 6; 
 	int numberOfItems = 0; 
 	MenuItem[] menuItems;
@@ -40,8 +40,13 @@ public class DinerMenu {
 			numberOfItems = numberOfItems + 1;
 		}
 	}
-	public MenuItem[] getMenuItems() 
-	{
-		return menuItems;
+	//Remove this method and add Iterator instead
+	//public MenuItem[] getMenuItems() 
+	//{
+	//	return menuItems;
+	//}
+	public Iterator createIterator() {
+		return new DinerMenuIterator(menuItems);
 	}
+	
 }

@@ -4,34 +4,32 @@ import java.util.ArrayList;
 
 //Waitress acts as a client
 public class Waitress {
-	PancakeHouseMenu pancakeHouseMenu;
-	ArrayList breakfastItems;
+	PancakeHouseMenu pancakeHouseMenu;	
 	DinerMenu dinerMenu;
-	MenuItem[] lunchItems;
 	
-	public Waitress(){
-		pancakeHouseMenu = new PancakeHouseMenu();
-		breakfastItems = pancakeHouseMenu.getMenuItems();
-		dinerMenu = new DinerMenu();
-		lunchItems = dinerMenu.getMenuItems();
+	public Waitress(DinerMenu _dinerMenu,PancakeHouseMenu _pancakeHouseMenu){
+		pancakeHouseMenu = _pancakeHouseMenu;
+		dinerMenu = _dinerMenu;
 	}
-	//Bad Implementation as each time we add another Baker we should add a lot of duplicate loops. 
-	public void printMenu(){
-		for (int i = 0; i < breakfastItems.size(); i++) 
-		{
-			MenuItem menuItem = (MenuItem)breakfastItems.get(i);
-			System.out.print(menuItem.getName() + " "); 
-			System.out.println(menuItem.getPrice() +  " "); 
-			System.out.println(menuItem.getDescription());
-		}
-		for (int i = 0; i < lunchItems.length; i++) 
-		{ 
-			MenuItem menuItem = lunchItems[i]; 
-			System.out.print(menuItem.getName() + " "); 
-			System.out.println(menuItem.getPrice() +  " "); 
-			System.out.println(menuItem.getDescription());
-		}
+	
+	public void printMenu(){		
+		Iterator pancakeIterator = pancakeHouseMenu.createIterator(); 
+		Iterator dinerIterator = dinerMenu.createIterator();
+		System.out.println("MENU\n----\nBREAKFAST"); 
+		printMenu(pancakeIterator);
+		System.out.println("\nLUNCH");
+		printMenu(dinerIterator);
+		
 	}
+	private void printMenu(Iterator iterator) {
+		while (iterator.hasNext()) {
+			MenuItem menuItem = (MenuItem)iterator.next(); 
+			System.out.print(menuItem.getName() + " , " ); 
+			System.out.print(menuItem.getPrice() + " -- "); 
+			System.out.println(menuItem.getDescription());
+			}
+	}
+	
 	//prints all vegetarian menu items
 	public void printVegetarianMenu(){}
 	
