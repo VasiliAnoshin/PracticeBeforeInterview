@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 //Waitress acts as a client
 public class Waitress {
-	PancakeHouseMenu pancakeHouseMenu;	
-	DinerMenu dinerMenu;
+	Menu pancakeHouseMenu;	
+	Menu dinerMenu;
 	
-	public Waitress(DinerMenu _dinerMenu,PancakeHouseMenu _pancakeHouseMenu){
+	public Waitress(Menu _dinerMenu,Menu _pancakeHouseMenu){
 		pancakeHouseMenu = _pancakeHouseMenu;
 		dinerMenu = _dinerMenu;
 	}
