@@ -2,7 +2,7 @@ package Observer;
 
 import java.util.ArrayList;
 
-public class StockGrabber {
+public class StockGrabber implements Subject{
 	private ArrayList<Observer> observers;	
     private double ibmPrice;	
 	private double aaplPrice;	
