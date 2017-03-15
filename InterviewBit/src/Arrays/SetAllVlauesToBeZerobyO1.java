@@ -1,11 +1,9 @@
 package Arrays;
 
-public class SetAllVlauesToBeZerobyO1 {
-	
+public class SetAllVlauesToBeZerobyO1 {	
 	int[] value;
 	int[] mask;
 	int current;
-	int pos;
 	private int initValue;
 	
 	public SetAllVlauesToBeZerobyO1(int size){
@@ -15,13 +13,12 @@ public class SetAllVlauesToBeZerobyO1 {
 		initValue = 0;
 	}
 	
-	public boolean setValue(int val){
+	public boolean setValue(int val, int pos){
 		if(pos >= this.value.length){
 			return false;
 		}
 		this.value[pos] = val;
 		this.mask[pos]  = current;
-		pos++;
 		return true;
 	}
 				

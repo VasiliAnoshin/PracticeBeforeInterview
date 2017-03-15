@@ -5,34 +5,34 @@ import java.lang.reflect.Array;
 public class InitializeAnArrayInO1{
 	
 	private int[] vec;
-	private int[] from;
-	private int[] to; 
-	private int top;
+	private int[] mask;
+	private int timeStamp;
 	private int size;
 	private int initValue;
 	
 	public InitializeAnArrayInO1(int _size){
-		top = 0;
+		timeStamp = 0;
 		vec  = new int[_size];
-		from = new int[_size];
-		to 	 = new int[_size];	
+		mask = new int[_size];
+		
 		this.size = _size;
-		this.initValue = 0;
+		this.initValue = 1;
 	}
 	public int getValue(int pos){
-		if (pos > size){
+		if (pos >= size){
 			return -1;
 		}		
-		if (from[pos] < top && to[from[pos]] == pos){
+		if (mask[pos] != timeStamp){
 			return vec[pos];
 		}else{
 			return initValue;
 		}
+	}	
+	public void setValue(int val, int pos){
+		vec[pos] = val;
+		mask[pos] = timeStamp;
 	}
-	
-	//public int setValue(int val){
-	//	vec[top] = val;
-	//	from[top] = top;
-//		to[from[top]] = top;
-//	}
+	public void setAll(){
+		this.timeStamp++;	
+	}	
 }
