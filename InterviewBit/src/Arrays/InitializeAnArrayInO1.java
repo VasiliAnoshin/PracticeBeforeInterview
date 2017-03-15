@@ -23,16 +23,16 @@ public class InitializeAnArrayInO1{
 			return -1;
 		}		
 		if (mask[pos] != timeStamp){
-			return vec[pos];
+			return initValue;		
 		}else{
-			return initValue;
+			return vec[pos];
 		}
 	}	
 	public void setValue(int val, int pos){
 		vec[pos] = val;
 		mask[pos] = timeStamp;
 	}
-	public void setAll(){
+	public void setAllValuesBe1(){		
 		this.timeStamp++;	
 	}	
 }
