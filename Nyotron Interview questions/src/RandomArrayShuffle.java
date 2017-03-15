@@ -4,16 +4,16 @@ public class RandomArrayShuffle {
 	
 	static void shuffleArray(int[] ar){
 	Random rand = new Random();
-	int a ;
+	int a ,index;
 	for (int i = ar.length - 1; i > 0; i--){
-	      int index = rand.nextInt(i + 1);
+	      //NextInt(i) return number in range 1 to (i-1)  
+		  index = rand.nextInt(i + 1);
 	      // Simple swap
 	      a = ar[index];
 	      ar[index] = ar[i];
 	      ar[i] = a;
 	    }
-	}
-	
+	}	
 	public static void main(String[] args) {
 		// Fisher–Yates shuffle:
 		int[] solutionArray = {1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1};
@@ -23,5 +23,4 @@ public class RandomArrayShuffle {
 		}
 		System.out.println();
 	}
-
 }
