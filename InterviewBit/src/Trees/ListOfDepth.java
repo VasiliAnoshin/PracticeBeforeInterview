@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * Given a binary tree, design an algorithm which creates a linkedList of 
- * all elements of all nodes at each depth.
+ * all elements of all nodes at each depth (If you have depth D you have d linkedLists); 
  */
 
 import LinkedList.ListNode;
@@ -31,7 +31,6 @@ public class ListOfDepth {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		TreeNode tree = new TreeNode(7);
 		tree.left = new TreeNode(5);
 		tree.right = new TreeNode(9);
