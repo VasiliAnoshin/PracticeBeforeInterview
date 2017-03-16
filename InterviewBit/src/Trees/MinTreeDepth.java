@@ -15,10 +15,11 @@ package Trees;
 
 public class MinTreeDepth {
 	public int minDepth(TreeNode a) {
-	    if(a==null){
+	    //Case when you get a == null outside.
+		if(a==null){
 	        return 0;
 	    }
-	    //Base case : the situation when you reach the leaf
+	    //Stop condition , Base case: the situation when you reach the leaf
 	    if(a.left == null && a.right ==null){
 	        return 1;
 	    }	    
