@@ -23,13 +23,11 @@ public class ListOfDepth {
 				node = node.next;
 			}
 			node.next = new ListNode(root.val);
-		}
-		
+		}		
 		listOfDepth(root.left,_list,level+1);
 		listOfDepth(root.right, _list, level+1);				
 		return _list;	
-	}
-	
+	}	
 	public static void main(String[] args) {
 		TreeNode tree = new TreeNode(7);
 		tree.left = new TreeNode(5);

@@ -10,9 +10,7 @@ package Trees;
  *       2
  * min depth = 2.
  * @author BenFranklin
- *
  */
-
 public class MinTreeDepth {
 	public int minDepth(TreeNode a) {
 	    //Case when you get a == null outside.
