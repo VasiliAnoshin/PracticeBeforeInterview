@@ -48,7 +48,7 @@ public class HasPathSum {
 		tree.left.right = new TreeNode(6);
 		tree.right.left = new TreeNode(1);
 		
-		hasPathSum hp = new hasPathSum();
+		HasPathSum hp = new HasPathSum();
 		System.out.println(hp.hasPathSum(tree,17));
 	}
 
