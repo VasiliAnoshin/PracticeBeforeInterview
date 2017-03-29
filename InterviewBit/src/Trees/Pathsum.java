@@ -39,7 +39,7 @@ public class Pathsum {
 	    if(t.left==null && t.right==null && sum==0){
 	        ArrayList<Integer> temp = new ArrayList<Integer>();
 	        temp.addAll(l);
-	        result.add(temp);
+	        result.add(temp);	    	
 	    }
 	 
 	    //search path of left node
@@ -55,5 +55,17 @@ public class Pathsum {
 	        dfs(t.right, sum-t.right.val, result, l);
 	        l.remove(l.size()-1);
 	    }
+	}
+	
+	public static void main(String[] args) {
+		Pathsum ps = new Pathsum();
+		TreeNode tree = new TreeNode(7);
+		tree.left = new TreeNode(5);
+		tree.right = new TreeNode(9);
+		tree.left.left = new TreeNode(4);
+		tree.left.right = new TreeNode(6);
+		tree.right.left = new TreeNode(1);
+		ps.pathSum(tree, 16);
+		
 	}
 }
