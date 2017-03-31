@@ -35,9 +35,35 @@ public class PreOrder {
 		}
 	    return list;
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+	//recoursive approach
+	public ArrayList<Integer> preorderTraverse(TreeNode a) {			
+		ArrayList<Integer> result = new ArrayList<>();
+		return helper(a,result);
 	}
-
+	//Recoursive approach
+	public ArrayList<Integer> helper(TreeNode a, ArrayList<Integer> help){
+		help.add(a.val);
+		if(a.left !=null){
+			helper(a.left,help);
+		}						
+		if(a.right!= null){
+			helper(a.right,help);
+		}
+		return help;
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub		
+		PreOrder order = new PreOrder();
+		TreeNode tree = new TreeNode(7);
+		tree.left = new TreeNode(5);
+		tree.right = new TreeNode(9);
+		tree.left.left = new TreeNode(4);
+		tree.left.right = new TreeNode(6);
+		tree.right.left = new TreeNode(1);
+		ArrayList<Integer> arr = order.preorderTraverse(tree);
+		for(int i =0; i < arr.size(); i++){
+			System.out.println(arr.get(i));
+		}
+	}
 }
