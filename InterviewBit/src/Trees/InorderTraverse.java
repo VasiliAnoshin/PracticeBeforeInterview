@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 public class InorderTraverse {
+	//Iterative solution
 	public ArrayList<Integer> inorderTraversal(TreeNode a) {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 
@@ -23,6 +24,25 @@ public class InorderTraverse {
 
 	    return list;
 	}
+	//recursive solution
+	public ArrayList<Integer> inorderTraversal2(TreeNode a) {			
+		ArrayList<Integer> result = new ArrayList<>();
+		return helper(a,result);
+	}
+	//Recoursive approach
+	public ArrayList<Integer> helper(TreeNode a, ArrayList<Integer> help){
+		if(a.left !=null){
+			helper(a.left,help);
+		}
+		
+		help.add(a.val);
+		
+		if(a.right!= null){
+			helper(a.right,help);
+		}
+		return help;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		InorderTraverse order = new InorderTraverse();
@@ -32,8 +52,8 @@ public class InorderTraverse {
 		tree.left.left = new TreeNode(4);
 		tree.left.right = new TreeNode(6);
 		tree.right.left = new TreeNode(1);
-		ArrayList<Integer> arr = order.inorderTraversal(tree);
-		for(int i =0;i < arr.size(); i++){
+		ArrayList<Integer> arr = order.inorderTraversal2(tree);
+		for(int i =0; i < arr.size(); i++){
 			System.out.println(arr.get(i));
 		}
 	}
