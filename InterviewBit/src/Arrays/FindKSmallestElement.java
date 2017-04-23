@@ -59,8 +59,9 @@ public class FindKSmallestElement {
 	    }
 	public static void main(String[] args) {
 		int[] arr = new int[]{3, 4, 7, 9, 12, 2, 1, 120};
+		int[] arr1 = new int[]{2, 4, 7, 5, 1, 6, 3 };
 		findKthLargest(arr,3);		
-		System.out.println(findKthSmallest(arr,5));
+		System.out.println(findKthSmallest(arr1,1));
 	}
 	
 }
